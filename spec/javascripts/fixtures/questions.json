@@ -1,0 +1,632 @@
+[
+  {
+    "key": "EL02",
+    "text": "De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL03",
+    "text": "Ik heb vaak moeite om mijn gedachten op een rijtje te zetten of de goede woorden te vinden.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL04",
+    "text": "Als ik iemand aankijk, of mijzelf in de spiegel bekijk, heb ik het gezicht vlak voor mijn ogen zien veranderen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL05",
+    "text": "Ik krijg soms vreemde gevoelens op of net onder mijn huid, net als kruipende beestjes.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL07",
+    "text": "Een vertrouwde omgeving lijkt soms vreemd, verwarrend, bedreigend of onwerkelijk.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL08",
+    "text": "Ik schijn vaak gebeurtenissen te beleven precies zoals die eerder gebeurd zijn (deja vu).",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL09",
+    "text": "Ik ruik en proef soms dingen die anderen niet kunnen ruiken of proeven.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL12",
+    "text": "Soms denk ik dat mensen mijn gedachten kunnen lezen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL13",
+    "text": "Ik heb dingen gehoord die andere mensen niet horen zoals stemmen van fluisterende of pratende mensen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL18",
+    "text": "Ik hoor vaak ongewone geluiden zoals gebonk, getik, gesis, geklap of gerinkel in mijn oren.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL19",
+    "text": "Ik zie vaak schaduwen aan voor mensen of hoor stemmen in geluiden.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL20",
+    "text": "De dingen die ik zie zien er anders uit als gewoon (helderder, doffer, groter, kleiner of veranderd op een andere manier).",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL23",
+    "text": "Ik dwaal vaak af van het onderwerp of draaf teveel door als ik praat.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL24",
+    "text": "Ik geloof in telepathie, paranormale krachten en waarzeggerij.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL25",
+    "text": "Ik heb vaak het gevoel dat anderen een hekel aan mij hebben.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL26",
+    "text": "Mijn reukvermogen wordt soms ongewoon sterk.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL27",
+    "text": "Soms heb ik het gevoel gehad dat ik niet de baas was over mijn eigen ideeen of gedachten.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL30",
+    "text": "Ik geloof dat ik bijzonder belangrijk ben of dat ik gaven heb van buitengewone aard.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL32",
+    "text": "Soms lijken mijn gedachten hardop uitgezonden te worden, zodat andere mensen weten wat ik denk.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL34",
+    "text": "Ik ben buitengewoon gevoelig voor lawaai.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL35",
+    "text": "Ik ben bijgelovig.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL36",
+    "text": "Ik heb mijn eigen gedachten gehoord alsof die buiten mijn hoofd waren.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL37",
+    "text": "Het kost mij moeite om me te concentreren op een gedachte tegelijk.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL38",
+    "text": "Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL46",
+    "text": "Ik heb soms het gevoel dat dingen die ik op tv zie of in de krant lees een bijzondere betekenis voor mij hebben.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL49",
+    "text": "Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL50",
+    "text": "Soms voel ik me plotseling afgeleid door geluiden van veraf, die ik gewoonlijk niet bemerk.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL52",
+    "text": "Ik heb het gevoel gehad dat er een of andere persoon of kracht om mij heen is, ook al kon ik niemand zien.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL55",
+    "text": "Ik maak me wel eens zorgen dat er iets met mijn geest aan de hand is.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL56",
+    "text": "Ik heb wel eens het gevoel gehad dat ik niet besta, dat de wereld niet bestaat, of dat ik dood ben.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL57",
+    "text": "Ik haal wel eens door elkaar of ik iets dat ik heb meegemaakt echt was of fantasie.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL60",
+    "text": "Ik heb ongewone lichamelijke gewaarwordingen gehad (tintelen, trekken, druk, pijn, branden, kou, doofheid, pijnscheuten, trillingen of elektriciteit).",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL61",
+    "text": "Ik houd er opvattingen op na die andere mensen ongewoon of bizar zouden vinden.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL64",
+    "text": "Ik heb het gevoel dat sommige delen van mijn lichaam op een of andere manier veranderd zijn of dat delen van mijn lichaam anders werken dan voorheen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL65",
+    "text": "Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL67",
+    "text": "Ik zie soms speciale betekenissen in advertenties, etalages of in de manier waarop dingen om mij heen zijn opgesteld.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL68",
+    "text": "Ik pik vaak verborgen dreigementen of afkeuring op uit wat mensen zeggen of doen.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL69",
+    "text": "Ik gebruik soms woorden op ongewone manieren.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL74",
+    "text": "Ik heb wel eens het gevoel dat een of ander persoon of kracht mijn denken verstoort of gedachten in mijn hoofd zet.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL75",
+    "text": "Ik heb ervaringen gehad met het bovennatuurlijke, astrologie, de toekomst zien of UFOs.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL76",
+    "text": "Sommige mensen maken toespelingen op mij of zeggen dingen met een dubbele betekenis.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL77",
+    "text": "Ik maak mij vaak zorgen dat mijn beste vrienden, klasgenoten of collegas niet werkelijk oprecht of te vertrouwen zijn.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL79",
+    "text": "Ik heb ongewone dingen gezien, zoals flitsen, vlammen, verblindend licht of geometrische figuren.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL84",
+    "text": "Ik heb dingen gezien die andere mensen blijkbaar niet kunnen zien.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  },
+  {
+    "key": "EL90",
+    "text": "Mensen vinden het vaak moeilijk om te begrijpen wat ik zeg.",
+    "answer_option_set": [
+      {
+        "value": 0,
+        "text": "Oneens"
+      },
+      {
+        "value": 1,
+        "text": "Eens"
+      }
+    ]
+  }
+]

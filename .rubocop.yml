@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    # Exclude generated code
+    - bin/**/*
+    - spec/teaspoon_env.rb
+    - Guardfile
+
+Metrics/LineLength:
+  Max: 120
+
+# Trust developers to document where neccesary, otherwise
+# rely on the code being self-documenting
+Style/Documentation:
+  Enabled: false

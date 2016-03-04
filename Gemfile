@@ -4,11 +4,9 @@ gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'jquery-rails'
-gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'appsignal', '~> 0.11.17'
 
+gem 'coffee-rails', '~> 4.1.1'
 gem 'coffee-script-source', '~> 1.10.0'
 gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
@@ -28,7 +26,6 @@ group :development do
   gem 'guard-teaspoon',      '~> 0.0'
   gem 'guard-rubocop',       '~> 1.1'
   gem 'guard-livereload',    '~> 2.4.0'
-
 end
 
 group :test do
@@ -39,6 +36,9 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0.11'
   gem 'selenium-webdriver',  '~> 2.52.0'
   gem 'poltergeist',         '~> 1.9.0'
+end
 
+group :test, :development do
+  gem 'teaspoon'
   gem 'teaspoon-jasmine'
 end

@@ -9,7 +9,7 @@ require File.expand_path('../boot', __FILE__)
   active_job
   sprockets
 ).each do |railtie|
-  require "#{railtie}"
+  require railtie
 end
 
 # Require the gems listed in Gemfile, including any gems
