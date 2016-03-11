@@ -3,14 +3,24 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'active_model_serializers'
+gem 'responders'
+gem 'rack-haproxy_status', '~> 0.8.1'
 
 gem 'appsignal', '~> 0.11.17'
 
+gem 'activeresource'
+
+gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.1.1'
 gem 'coffee-script-source', '~> 1.10.0'
 gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'react-rails', '~> 1.6.0'
+
+gem 'opencpu'
+
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug'
@@ -26,11 +36,16 @@ group :development do
   gem 'guard-teaspoon',      '~> 0.0'
   gem 'guard-rubocop',       '~> 1.1'
   gem 'guard-livereload',    '~> 2.4.0'
+  gem 'guard-coffeelint'
+  gem 'guard-bundler'
 end
 
 group :test do
   gem 'rubocop'
+  gem 'coffeelint'
   gem 'rspec-rails', '~> 3.4.2'
+  gem 'vcr', '~> 3.0.1'
+  gem 'webmock', '~> 1.24.2'
 
   gem 'capybara',            '~> 2.6.2'
   gem 'capybara-screenshot', '~> 1.0.11'

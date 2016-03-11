@@ -1,27 +1,15 @@
 describe 'ScreensmartApp', ->
-  beforeEach ->
-    @questions = fixture.preload('questions.json')[0]
-
   it 'initially shows a div with the first question', ->
-    expect(@questions[0].key).toBe('EL02')
-
-    initialQuestions = [
-      key: 'EL02'
-      text: "De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders."
-      answerOptionSet: [
-        { value: 0, text: 'Oneens' },
-        { value: 1, text: 'Eens' },
-      ],
-      answer: null
-    ]
-
+    initialResponse = fixture.load('initial_response.json')[0]
     app = React.createElement ScreensmartApp,
       backend: 'demo.roqua.dev:3000'
-      questions: @questions
-      initialResponse:
-        estimate: 1.0
-        variance: 0.5
-        questions: initialQuestions
+      initialResponse: initialResponse
 
-    expect React.addons.TestUtils.createRenderer().render(app), 'to have rendered with children',
-      React.createElement QuestionList, questions: initialQuestions
+    renderer = React.addons.TestUtils.createRenderer()
+    renderer.render(app)
+    rendered = renderer.getRenderOutput()
+    expect(rendered.type).toBe('div')
+    expect(rendered.props.children).toEqual([
+      React.DOM.h1 null, 'screensmart'
+      React.createElement QuestionList, questions: initialResponse.questions
+    ])
