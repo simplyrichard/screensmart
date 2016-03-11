@@ -12,6 +12,3 @@ test:
           RAILS_ENV: test
           RACK_ENV: test
     - bundle exec rubocop
-deployment:
-  release:
-    branch: /(master|rel_.*)/
