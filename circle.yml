@@ -1,0 +1,17 @@
+machine:
+  ruby:
+    version: 2.2.3
+test:
+  override:
+    - bundle exec rspec spec:
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+    - bundle exec teaspoon:
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+    - bundle exec rubocop
+deployment:
+  release:
+    branch: /(master|rel_.*)/
