@@ -2,6 +2,22 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
                           match_requests_on: [:body, :uri, :method] } do
   let(:described_module) { RPackage }
 
+  describe '.questions' do
+    before do
+      Rails.application.config.cache_store = :memory_store
+      Rails.cache.clear
+    end
+
+    after do
+      Rails.application.config.cache_store = :null_store
+    end
+
+    it 'caches the call to OpenCPU' do
+      expect(RPackage).to receive(:call).and_call_original.once
+      2.times { RPackage.questions }
+    end
+  end
+
   describe '.data_for' do
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
@@ -18,6 +34,40 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
           next_question_key: 'EL03',
           estimate: 0.7,
           variance: 0.6
+      end
+    end
+
+    describe 'caching' do
+      def first_call
+        described_module.data_for([], 1.0, 0.5)
+      end
+
+      def second_call
+        described_module.data_for({ 'EL02' => 1 }, 1.0, 0.5)
+      end
+
+      before(:each) do
+        Rails.application.config.cache_store = :memory_store
+        Rails.cache.clear
+      end
+
+      after(:all) do
+        Rails.application.config.cache_store = :null_store
+      end
+
+      context 'when answers, estimate and variance remain unchanged' do
+        it 'calls OpenCPU once' do
+          expect(RPackage).to receive(:call).and_call_original.once
+          first_call
+        end
+      end
+
+      context 'when answers, estimate and variance change between calls' do
+        it 'calls the R package again' do
+          expect(RPackage).to receive(:call).and_call_original.twice
+          first_call
+          second_call
+        end
       end
     end
   end

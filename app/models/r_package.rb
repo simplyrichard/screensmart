@@ -1,17 +1,25 @@
 # Only module that should communicate with screensmart-r
 module RPackage
   def self.questions
-    call('get_itembank_rdata')
+    Rails.cache.fetch('questions') do
+      call('get_itembank_rdata')
+    end
   end
 
   def self.data_for(raw_answers, estimate, variance)
-    raw_data = call('call_shadowcat', responses: answers_for_r(raw_answers), estimate: estimate, variance: variance)
+    Rails.cache.fetch(cache_key_for(raw_answers, estimate, variance)) do
+      raw_data = call('call_shadowcat', responses: answers_for_r(raw_answers), estimate: estimate, variance: variance)
 
-    {
-      next_question_key: raw_data['key_new_item'],
-      estimate: raw_data['estimate'][0],
-      variance: raw_data['variance'][0]
-    }
+      {
+        next_question_key: raw_data['key_new_item'],
+        estimate: raw_data['estimate'][0],
+        variance: raw_data['variance'][0]
+      }
+    end
+  end
+
+  def self.cache_key_for(raw_answers, estimate, variance)
+    "#{raw_answers}#{estimate}#{variance}"
   end
 
   def self.answers_for_r(raw_answers)

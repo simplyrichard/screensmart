@@ -25,6 +25,8 @@ RSpec.configure do |config|
 
   Kernel.srand config.seed
 
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
   VCR.configure do |vcr|
     vcr.cassette_library_dir = 'spec/cassettes'
     vcr.hook_into :webmock
