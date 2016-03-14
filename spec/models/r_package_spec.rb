@@ -36,13 +36,6 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
       end
     end
 
-    context 'with non-integer values' do
-      it 'raises an exception' do
-        expect { described_module.answers_for_r('EL02' => '1.0') }.to \
-          raise_error 'answers keys must all be integer strings'
-      end
-    end
-
     context 'with no answers' do
       it 'returns an empty array' do
         expect(described_module.answers_for_r({})).to eq []

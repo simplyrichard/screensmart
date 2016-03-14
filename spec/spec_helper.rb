@@ -1,5 +1,6 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
+require 'rspec/collection_matchers'
 require 'vcr'
 require 'opencpu'
 

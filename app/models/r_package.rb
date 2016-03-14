@@ -15,8 +15,6 @@ module RPackage
   end
 
   def self.answers_for_r(raw_answers)
-    raise 'answers keys must all be integer strings' unless answer_keys_integers(raw_answers)
-
     answers = {}
     raw_answers.each do |key, value|
       answers[key] = value.to_i
@@ -24,10 +22,6 @@ module RPackage
 
     # TODO: find a way to call OpenCPU with responses: [{}]
     answers.present? ? [answers] : []
-  end
-
-  def self.answer_keys_integers(raw_answers)
-    raw_answers.all? { |_key, value| value.to_i.to_s == value }
   end
 
   def self.call(function, parameters = {})
