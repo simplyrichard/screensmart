@@ -94,7 +94,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"responses":[],"estimate":1,"variance":0.5}'
+      string: '{"responses":[],"estimate":1.0,"variance":0.5}'
     headers:
       Content-Type:
       - application/json
@@ -146,8 +146,8 @@ http_interactions:
       string: |
         {
           "key_new_item": "EL02",
-          "estimate": 1,
-          "variance": 0.5,
+          "estimate": [1],
+          "variance": [0.5],
           "responses": []
         }
     http_version: 
@@ -157,7 +157,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"responses":[{"EL02":1}],"estimate":1,"variance":0.5}'
+      string: '{"responses":[{"EL02":1}],"estimate":1.0,"variance":0.5}'
     headers:
       Content-Type:
       - application/json
@@ -209,8 +209,8 @@ http_interactions:
       string: |
         {
           "key_new_item": "EL03",
-          "estimate": 0.7,
-          "variance": 0.6,
+          "estimate": [0.7],
+          "variance": [0.6],
           "responses": []
         }
     http_version: 

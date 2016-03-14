@@ -12,3 +12,7 @@ Metrics/LineLength:
 # rely on the code being self-documenting
 Style/Documentation:
   Enabled: false
+
+Style/MethodLength:
+  Exclude:
+    - spec/**/*_spec.rb
