@@ -13,6 +13,6 @@ Metrics/LineLength:
 Style/Documentation:
   Enabled: false
 
-Style/MethodLength:
+Metrics/MethodLength:
   Exclude:
     - spec/**/*_spec.rb
