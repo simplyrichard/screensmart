@@ -18,4 +18,4 @@
 
 .env.local
 .env.development
-.byebug-history
+.byebug_history
