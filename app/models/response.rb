@@ -4,6 +4,7 @@ class Response
   include ActiveModel::Validations
   attr_accessor :answers, :old_estimate, :old_variance
 
+  # TODO accept string inputs but they should be castable to float
   validates :old_estimate, numericality: { only_float: true },
                            inclusion:    { in: -1.0..1.0 }
 
