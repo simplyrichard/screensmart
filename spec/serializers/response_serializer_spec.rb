@@ -1,7 +1,8 @@
 describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
                                     match_requests_on: [:body, :uri, :method] } do
   subject do
-    JSON.parse(ResponseSerializer.new(Response.new(answers: { 'EL02' => 1 })).to_json)['response']
+    response = Response.new(answers: { 'EL02' => 1 }, old_estimate: 1.0, old_variance: 0.5)
+    JSON.parse(ResponseSerializer.new(response).to_json)['response']
   end
 
   it 'includes id and next_question' do

@@ -4,12 +4,11 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
   describe '.questions' do
     before do
-      Rails.application.config.cache_store = :memory_store
-      Rails.cache.clear
+      enable_caching
     end
 
     after do
-      Rails.application.config.cache_store = :null_store
+      disable_caching
     end
 
     it 'caches the call to OpenCPU' do
@@ -21,7 +20,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
   describe '.data_for' do
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
-        expect(described_module.data_for({}, 1.0, 0.5)).to eq \
+        expect(described_module.data_for({})).to eq \
           next_question_key: 'EL02',
           estimate: 1.0,
           variance: 0.5
@@ -39,7 +38,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
     describe 'caching' do
       def first_call
-        described_module.data_for([], 1.0, 0.5)
+        described_module.data_for([])
       end
 
       def second_call
@@ -47,17 +46,17 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
       end
 
       before(:each) do
-        Rails.application.config.cache_store = :memory_store
-        Rails.cache.clear
+        enable_caching
       end
 
       after(:all) do
-        Rails.application.config.cache_store = :null_store
+        disable_caching
       end
 
       context 'when answers, estimate and variance remain unchanged' do
         it 'calls OpenCPU once' do
           expect(RPackage).to receive(:call).and_call_original.once
+          first_call
           first_call
         end
       end

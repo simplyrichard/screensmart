@@ -6,14 +6,18 @@ module RPackage
     end
   end
 
-  def self.data_for(raw_answers, estimate, variance)
+  def self.data_for(raw_answers, estimate = nil, variance = nil)
     Rails.cache.fetch(cache_key_for(raw_answers, estimate, variance)) do
-      raw_data = call('call_shadowcat', responses: answers_for_r(raw_answers), estimate: estimate, variance: variance)
+      params = {
+        responses: answers_for_r(raw_answers),
+        estimate: estimate ? estimate.to_f : nil,
+        variance: variance ? variance.to_f : nil }.compact
+      raw_data = call('call_shadowcat', params)
 
       {
         next_question_key: raw_data['key_new_item'],
-        estimate: raw_data['estimate'][0],
-        variance: raw_data['variance'][0]
+        estimate: raw_data['estimate'][0].to_f,
+        variance: raw_data['variance'][0].to_f
       }
     end
   end

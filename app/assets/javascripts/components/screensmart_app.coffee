@@ -34,8 +34,8 @@
       dataType: 'json'
       data:
         answers:  @answerHash()
-        old_estimate: @state.response.estimate
-        old_variance: @state.response.variance
+        old_estimate: @state.response.estimate.toFixed(4)
+        old_variance: @state.response.variance.toFixed(4)
       headers:
         'X-CSRF-Token': @props.csrfToken
     .fail (xhr, status, errorThrown) ->

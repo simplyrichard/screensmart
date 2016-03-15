@@ -94,7 +94,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"responses":[],"estimate":1.0,"variance":0.5}'
+      string: '{"responses":[]}'
     headers:
       Content-Type:
       - application/json
