@@ -60,5 +60,3 @@ group :test, :development do
   gem 'teaspoon'
   gem 'teaspoon-jasmine'
 end
-
-ruby '2.2.3'
