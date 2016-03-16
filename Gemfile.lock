@@ -351,6 +351,7 @@ DEPENDENCIES
   activeresource
   appsignal (~> 0.11.17)
   awesome_print (~> 1.6)
+  bourbon
   byebug
   capybara (~> 2.6.2)
   capybara-screenshot (~> 1.0.11)
