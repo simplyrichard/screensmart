@@ -12,7 +12,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
     end
 
     it 'caches the call to OpenCPU' do
-      expect(RPackage).to receive(:call).and_call_original.once
+      expect(OpenCPU).to receive(:client).and_call_original.once
       2.times { RPackage.questions }
     end
   end
@@ -55,7 +55,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
       context 'when answers, estimate and variance remain unchanged' do
         it 'calls OpenCPU once' do
-          expect(RPackage).to receive(:call).and_call_original.once
+          expect(OpenCPU).to receive(:client).and_call_original.once
           first_call
           first_call
         end
@@ -63,7 +63,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
       context 'when answers, estimate and variance change between calls' do
         it 'calls the R package again' do
-          expect(RPackage).to receive(:call).and_call_original.twice
+          expect(OpenCPU).to receive(:client).and_call_original.twice
           first_call
           second_call
         end
