@@ -1,7 +1,7 @@
 # Only module that should communicate with screensmart-r
 module RPackage
   def self.questions
-    Rails.cache.fetch('questions') do
+    Rails.cache.fetch("#{Rails.env}_questions") do
       call('get_itembank_rdata')
     end
   end
@@ -23,7 +23,7 @@ module RPackage
   end
 
   def self.cache_key_for(raw_answers, estimate, variance)
-    "#{raw_answers}#{estimate}#{variance}"
+    "#{Rails.env}_#{raw_answers}#{estimate}#{variance}"
   end
 
   def self.answers_for_r(raw_answers)
