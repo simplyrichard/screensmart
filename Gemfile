@@ -22,6 +22,8 @@ gem 'opencpu'
 
 gem 'dotenv-rails'
 
+gem 'rails_12factor', group: :production # TODO: remove after dropping Heroku
+
 group :development, :test do
   gem 'byebug'
   gem 'awesome_print', '~> 1.6'
@@ -58,3 +60,5 @@ group :test, :development do
   gem 'teaspoon'
   gem 'teaspoon-jasmine'
 end
+
+ruby '2.2.3'
