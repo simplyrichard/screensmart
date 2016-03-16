@@ -1,4 +1,4 @@
-# Only module that should communicate with screensmart-r
+# Only module that should communicate with screensmart-r.
 module RPackage
   def self.questions
     call('get_itembank_rdata')
@@ -7,8 +7,8 @@ module RPackage
   def self.data_for(raw_answers, estimate = nil, variance = nil)
     params = {
       responses: answers_for_r(raw_answers),
-      estimate: estimate ? estimate.to_f : nil,
-      variance: variance ? variance.to_f : nil
+      estimate: estimate.try(:to_f),
+      variance: variance.try(:to_f)
     }.compact
 
     raw_data = call('call_shadowcat', params)
