@@ -69,9 +69,6 @@
   render: ->
     div
       className: 'app'
-      h1
-        className: 'application-name'
-        'screensmart'
       p
         className: 'estimate'
         "estimate: #{@estimate()}"
