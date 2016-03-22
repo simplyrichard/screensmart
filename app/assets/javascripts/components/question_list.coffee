@@ -28,7 +28,6 @@
                   input
                     type: 'radio'
                     name: question.key
-                    checked: @props.checked
                     value: answer_option.value
                     onClick: @onAnswerOptionClick
                   answer_option.text
