@@ -69,13 +69,11 @@
   render: ->
     div
       className: 'app'
-      h1
-        className: 'application-name'
-        'screensmart'
-      p
-        className: 'estimate'
-        "estimate: #{@estimate()}"
-      p
-        className: 'variance'
+      div
+        className: 'debug'
+        p
+          className: 'estimate'
+          "estimate: #{@estimate()}"
+        p
+          className: 'variance'
         "variance: #{@variance()}"
-      React.createElement QuestionList, onAnswerChange: @onAnswerChange, questions: @questions()

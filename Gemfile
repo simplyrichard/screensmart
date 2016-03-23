@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.1'
 gem 'coffee-script-source', '~> 1.10.0'
 gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
+gem 'bourbon'
 gem 'react-rails', '~> 1.6.0'
 
 gem 'opencpu'
