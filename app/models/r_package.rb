@@ -12,12 +12,9 @@ module RPackage
     call('get_itembank_rdata')
   end
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def self.data_for(answers)
     raw_data = call('call_shadowcat', responses: [])
-    memo = { next_question_key: raw_data['key_new_item'],
-             estimate: raw_data['estimate'][0].to_f,
-             variance: raw_data['variance'][0].to_f }
+    memo = rewrite_response_hash(raw_data)
 
     answers.each_with_index do |_, index|
       params = { responses: [answers.take(index + 1).to_h],
@@ -26,16 +23,17 @@ module RPackage
 
       raw_data = call('call_shadowcat', params)
 
-      memo = {
-        next_question_key: raw_data['key_new_item'],
-        estimate: raw_data['estimate'][0].to_f,
-        variance: raw_data['variance'][0].to_f
-      }
+      memo = rewrite_response_hash(raw_data)
     end
 
     memo
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+
+  def self.rewrite_response_hash(raw_data)
+    { next_question_key: raw_data['key_new_item'],
+      estimate: raw_data['estimate'][0].to_f,
+      variance: raw_data['variance'][0].to_f }
+  end
 
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
