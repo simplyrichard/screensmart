@@ -13,6 +13,10 @@ Metrics/LineLength:
 Style/Documentation:
   Enabled: false
 
+Style/LambdaCall:
+  Exclude:
+    - Guardfile
+
 Metrics/MethodLength:
   Exclude:
     - spec/**/*_spec.rb

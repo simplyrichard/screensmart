@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'active_model_serializers'
@@ -22,8 +22,6 @@ gem 'react-rails', '~> 1.6.0'
 gem 'opencpu'
 
 gem 'dotenv-rails'
-
-gem 'rails_12factor', group: :production # TODO: remove after dropping Heroku
 
 group :development, :test do
   gem 'byebug'
