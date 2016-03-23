@@ -3,7 +3,6 @@ AllCops:
     # Exclude generated code
     - bin/**/*
     - spec/teaspoon_env.rb
-    - Guardfile
 
 Metrics/LineLength:
   Max: 120
