@@ -1,34 +1,41 @@
 # Only module that should communicate with screensmart-r.
 module RPackage
+  def self.question_by_key(key)
+    questions.detect { |question| question['key'] == key }
+  end
+
+  def self.question_keys
+    questions.map { |question| question['key'] }
+  end
+
   def self.questions
     call('get_itembank_rdata')
   end
 
-  def self.data_for(raw_answers, estimate = nil, variance = nil)
-    params = {
-      responses: answers_for_r(raw_answers),
-      estimate: estimate.try(:to_f),
-      variance: variance.try(:to_f)
-    }.compact
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def self.data_for(answers)
+    raw_data = call('call_shadowcat', responses: [])
+    memo = { next_question_key: raw_data['key_new_item'],
+             estimate: raw_data['estimate'][0].to_f,
+             variance: raw_data['variance'][0].to_f }
 
-    raw_data = call('call_shadowcat', params)
+    answers.each_with_index do |_, index|
+      params = { responses: [answers.take(index + 1).to_h],
+                 estimate: memo[:estimate].try(:to_f),
+                 variance: memo[:variance].try(:to_f) }.compact
 
-    {
-      next_question_key: raw_data['key_new_item'],
-      estimate: raw_data['estimate'][0].to_f,
-      variance: raw_data['variance'][0].to_f
-    }
-  end
+      raw_data = call('call_shadowcat', params)
 
-  def self.answers_for_r(raw_answers)
-    answers = {}
-    raw_answers.each do |key, value|
-      answers[key] = value.to_i
+      memo = {
+        next_question_key: raw_data['key_new_item'],
+        estimate: raw_data['estimate'][0].to_f,
+        variance: raw_data['variance'][0].to_f
+      }
     end
 
-    # TODO: find a way to call OpenCPU with responses: [{}]
-    answers.present? ? [answers] : []
+    memo
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
@@ -39,6 +46,6 @@ module RPackage
   end
 
   def self.cache_key_for(function, parameters)
-    "#{Rails.env}/R/#{function}/#{parameters}"
+    "#{ENV['RAILS_ENV']}/R/#{function}/#{parameters}"
   end
 end

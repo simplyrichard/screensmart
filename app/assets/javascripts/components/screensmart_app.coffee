@@ -1,5 +1,6 @@
 {div, h1, p} = React.DOM
 
+
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
@@ -7,43 +8,61 @@
     response: @props.initialResponse
 
   questionByKey: (key) ->
-    @state.response.questions.find((question) ->
+    @questions().find((question) ->
       question.key == key
     )
+
+  indexOf: (key) ->
+    @questions().indexOf(@questionByKey(key))
 
   addAnswerToQuestion: (key, value) ->
     response = @state.response
     questions = response.questions
-    question_index = questions.indexOf(@questionByKey(key))
-    response.questions[question_index].answer = value
+    response.questions[@indexOf(key)].answer_value = value
+    @setState(response: response)
+
+  removeQuestionsStartingAt: (key) ->
+    startIndex = @indexOf(key) + 1
+    elementsToRemove = @questions().length - startIndex
+    response = @state.response
+    response.questions.splice(startIndex, elementsToRemove)
     @setState(response: response)
 
   questionsWithAnswer: ->
-    @state.response.questions.filter (question) ->
-      question.answer?
+    @questions().filter (question) ->
+      question.answer_value?
 
-  answerHash: ->
-    answers = {}
+  questions: ->
+    @state.response.questions
+
+  estimate: ->
+    @state.response.estimate
+
+  variance: ->
+    @state.response.variance
+
+  answerValues: ->
+    answerValues = {}
     @questionsWithAnswer().forEach (question) ->
-      answers[question.key] = question.answer
-    answers
+      answerValues[question.key] = parseInt(question.answer_value)
+    answerValues
 
   refreshResponse: ->
     $.ajax '/responses',
       method: 'POST'
       dataType: 'json'
-      data:
-        answers:  @answerHash()
-        old_estimate: @state.response.estimate.toFixed(4)
-        old_variance: @state.response.variance.toFixed(4)
+      contentType: 'application/json'
+      data: JSON.stringify
+        answer_values: @answerValues()
       headers:
         'X-CSRF-Token': @props.csrfToken
-    .fail (xhr, status, errorThrown) ->
-      console.log("Failure: #{status}, #{errorThrown}")
+    .fail (xhr, status, error) ->
+      console.log("Failure: #{status}, #{error}")
     .done (data) =>
       @setState(response: data.response)
 
   onAnswerChange: (key, value) ->
+    @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
     @refreshResponse()
 
@@ -55,8 +74,8 @@
         'screensmart'
       p
         className: 'estimate'
-        "estimate: #{@state.response.estimate}"
+        "estimate: #{@estimate()}"
       p
         className: 'variance'
-        "variance: #{@state.response.variance}"
-      React.createElement QuestionList, onAnswerChange: @onAnswerChange, questions: @state.response.questions
+        "variance: #{@variance()}"
+      React.createElement QuestionList, onAnswerChange: @onAnswerChange, questions: @questions()
