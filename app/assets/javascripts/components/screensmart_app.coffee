@@ -76,4 +76,7 @@
           "estimate: #{@estimate()}"
         p
           className: 'variance'
-        "variance: #{@variance()}"
+          "variance: #{@variance()}"
+      React.createElement QuestionList,
+        onAnswerChange: @onAnswerChange
+        questions: @questions()
