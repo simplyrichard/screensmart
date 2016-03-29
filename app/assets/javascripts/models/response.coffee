@@ -50,9 +50,15 @@ class @Response
     @view.setState(response: @state)
 
   questionByKey: (key) ->
-    @questions().find((question) ->
-      question.key == key
+    result = null
+    @questions().some((question) ->
+      if question.key == key
+        result = question
+        true
+      else
+        false
     )
+    result
 
   indexOf: (key) ->
     @questions().indexOf(@questionByKey(key))
