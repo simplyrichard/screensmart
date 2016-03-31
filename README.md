@@ -15,6 +15,10 @@ rails server
 ```
 
 # Deployment
+## Heroku (until our own server is done)
+`git push heroku master`
+
+## Own server (WIP)
 In your projects directory:
 ```
 git clone git@github.com:roqua/deployer.git
