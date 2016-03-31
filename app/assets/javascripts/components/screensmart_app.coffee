@@ -1,5 +1,3 @@
-{div, h1, p} = React.DOM
-
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
@@ -12,9 +10,12 @@
       estimate: 0.0
       variance: 0.0
       done: false
+      processing: false
 
   render: ->
     {estimate, variance, questions, done} = @state.response
+    {div, h1, p} = React.DOM
+
     div
       className: 'app'
       div
@@ -26,7 +27,8 @@
           className: 'variance'
           "variance: #{variance}"
       React.createElement QuestionList,
-        onAnswerChange: (key, value) => @model.onAnswerChange(key, value)
+        onAnswerChange: (key, value) => @model.setAnswer(key, value)
         questions: questions
+        processing: @state.processing
       if done
         "Done. estimate: #{estimate}, variance: #{variance}"

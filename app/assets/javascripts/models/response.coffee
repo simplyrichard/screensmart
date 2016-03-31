@@ -29,6 +29,7 @@ class @Response
 
   refresh: ->
     oldState = @state
+    @view.setState(processing: true)
 
     $.ajax '/responses',
       method: 'POST'
@@ -48,7 +49,7 @@ class @Response
         @updateView()
 
   updateView: ->
-    @view.setState(response: @state)
+    @view.setState(response: @state, processing: false)
 
   questionByKey: (key) ->
     result = null
@@ -72,7 +73,7 @@ class @Response
     elementsToRemove = @questions().length - startIndex
     @state.questions.splice(startIndex, elementsToRemove)
 
-  onAnswerChange: (key, value) ->
+  setAnswer: (key, value) ->
     @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
     @refresh()

@@ -19,6 +19,7 @@ gem 'coffee-script-source', '~> 1.10.0'
 gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
+gem 'font-awesome-rails'
 gem 'react-rails', '~> 1.6.0'
 
 gem 'opencpu'
@@ -38,7 +39,6 @@ group :development do
 
   gem 'guard',               '~> 2.13.0'
   gem 'guard-rspec',         '~> 4.6.4'
-  gem 'guard-teaspoon',      '~> 0.0'
   gem 'guard-rubocop',       '~> 1.1'
   gem 'guard-livereload',    '~> 2.4.0'
   gem 'guard-coffeelint'
@@ -55,11 +55,5 @@ group :test do
 
   gem 'capybara',            '~> 2.6.2'
   gem 'capybara-screenshot', '~> 1.0.11'
-  gem 'selenium-webdriver',  '~> 2.52.0'
   gem 'poltergeist',         '~> 1.9.0'
-end
-
-group :test, :development do
-  gem 'teaspoon'
-  gem 'teaspoon-jasmine'
 end
