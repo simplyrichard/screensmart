@@ -32,9 +32,16 @@ header
   padding: 15px 35px
   margin: 20px
 
-  opacity: 0.2
+  opacity: 0.1
   &:nth-last-child(2)
-    opacity: 0.6
+    opacity: 1.0
+    &:before
+      position: absolute
+      content: ''
+      width: 100%
+      margin-top: -29px
+      left: 0
+      border-top: 3px dashed #333
   &:last-child
     opacity: 1.0
 
