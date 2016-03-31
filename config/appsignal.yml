@@ -1,17 +1,11 @@
 default: &defaults
   push_api_key: "<%= ENV['APPSIGNAL_PUSH_API_KEY'] %>"
-
   name: "Screensmart"
-
   slow_request_threshold: 200
 
 development:
   <<: *defaults
   active: false
-
-staging:
-  <<: *defaults
-  active: true
 
 production:
   <<: *defaults
