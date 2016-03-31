@@ -3,38 +3,17 @@
 @QuestionList = React.createClass
   displayName: 'QuestionList'
 
-  onAnswerOptionClick: (event) ->
-    question = event.target
-    @props.onAnswerChange(question.name, question.value)
-
   render: ->
+    {questions, processing, onAnswerChange} = @props
+
     div
       className: 'questions'
-      @props.questions.map (question) =>
-        div
-          className: 'question'
+      questions.map (question) ->
+        React.createElement Question,
+          question: question
           key: question.key
-          p
-            className: 'text'
-            question.text
-          ul
-            className: 'options'
-            question.answer_option_set.answer_options.map (answer_option) =>
-              key = "question_#{question.key}_answer_#{answer_option.value}"
-              li
-                className: 'option'
-                key: key
-                input
-                  type: 'radio'
-                  name: question.key
-                  id: key
-                  value: answer_option.value
-                  onClick: @onAnswerOptionClick
-                label
-                  className: 'text'
-                  htmlFor: key
-                  answer_option.text
-      if @props.processing
+          onChange: onAnswerChange
+      if processing
         div
           className: 'question loading'
           i
