@@ -19,8 +19,15 @@ body
   padding: 15px 35px
   margin: 20px
 
+  opacity: 0.2
+  &:nth-last-child(2)
+    opacity: 0.6
+  &:last-child
+    opacity: 1.0
+
   &.loading
     text-align: center
+
 
 .options
   padding: 0
