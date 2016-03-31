@@ -1,4 +1,4 @@
-describe Question, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true } do
+describe Question do
   subject { described_class.new }
 
   describe '#text' do

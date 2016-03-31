@@ -1,4 +1,4 @@
-describe AnswerOptionSet, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true } do
+describe AnswerOptionSet do
   let(:answer_option_set) { Question.new(key: 'EL02').answer_option_set }
   describe 'as an enumerable' do
     it 'iterates through the answer options' do

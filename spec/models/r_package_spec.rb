@@ -1,5 +1,4 @@
-describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
-                          match_requests_on: [:body, :uri, :method] } do
+describe RPackage do
   let(:described_module) { RPackage }
 
   describe '.question_keys' do

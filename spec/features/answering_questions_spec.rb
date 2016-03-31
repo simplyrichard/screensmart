@@ -1,5 +1,4 @@
-describe 'answering questions', vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
-                                       match_requests_on: [:body, :uri, :method] } do
+describe 'answering questions' do
   def answer_newest_question
     find('.question:last-child .option:last-child').click
   end

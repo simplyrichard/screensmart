@@ -1,5 +1,4 @@
-describe Response, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
-                          match_requests_on: [:body, :uri, :method] } do
+describe Response do
   def r(args = {})
     Response.new(args)
   end

@@ -34,6 +34,15 @@ RSpec.configure do |config|
     vcr.hook_into :webmock
     vcr.configure_rspec_metadata!
     vcr.ignore_localhost = true
+
+    vcr.default_cassette_options = {
+      allow_playback_repeats: true,
+      match_requests_on: [:body, :uri, :method]
+    }
+  end
+
+  config.around :example do |example|
+    VCR.use_cassette('screensmart') { example.run }
   end
 
   OpenCPU.configure do |opencpu|

@@ -1,5 +1,4 @@
-describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
-                                    match_requests_on: [:body, :uri, :method] } do
+describe ResponseSerializer do
   subject do
     response = Response.new(answer_values: { 'EL02' => 1 })
     JSON.parse(ResponseSerializer.new(response).to_json)['response']

@@ -1,5 +1,4 @@
-describe ResponsesController, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
-                                     match_requests_on: [:body, :uri, :method] } do
+describe ResponsesController do
   describe '#create' do
     context 'with no answers' do
       it 'includes the first question' do

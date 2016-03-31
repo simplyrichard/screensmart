@@ -1,4 +1,4 @@
-describe ResponseValidator, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true } do
+describe ResponseValidator do
   let(:subject) { Response.new }
 
   describe '#validate' do
