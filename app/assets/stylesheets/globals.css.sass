@@ -1,15 +1,28 @@
 body
   background-color: $application-background-color
 
-.brand-logo
-  min-height: $logo-height
-  img
-    max-width: $logo-width
-    margin: 15px 0 0 50px
+header
+  position: fixed
+  .brand-logo
+    min-height: $logo-height
+    img
+      max-width: $logo-width
+      margin: 15px 0 0 50px
 
 .app
-  @include outer-container(70%)
-  width: $layout-width
+  @include outer-container
+
+.questions-wrapper
+  @include span-columns(8)
+  @include shift(2)
+  position: relative
+  height: 75%
+  min-height: 800px
+  @media(max-height: 800px)
+    min-height: 100vh
+  .questions
+    position: absolute
+    bottom: 0
 
 .question
   background-color: $question-background-color
