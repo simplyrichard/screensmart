@@ -27,8 +27,7 @@ gem 'opencpu'
 gem 'dotenv-rails'
 
 group :production do
-  gem 'rails_12factor', group: :production
-  gem 'unicorn', '~> 5.0.1'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
