@@ -17,10 +17,11 @@ header
   @include shift(2)
   position: relative
   height: 75%
-  min-height: 800px
-  @media(max-height: 800px)
+  min-height: $mobile
+  @media(max-height: $mobile)
     min-height: 100vh
   .questions
+    overflow: hidden
     position: absolute
     bottom: 0
 
@@ -30,23 +31,21 @@ header
   border-radius: 4px
   min-height: $question-height
   padding: 15px 35px
-  margin: 20px
+  margin: $question-margin
 
-  opacity: 0.1
-  &:nth-last-child(2)
-    opacity: 1.0
-    &:before
-      position: absolute
-      content: ''
-      width: 100%
-      margin-top: -29px
-      left: 0
-      border-top: 3px dashed #333
-  &:last-child
+  transition: all $easing
+  opacity: 0
+  &:nth-last-child(2), &:last-child
     opacity: 1.0
 
   &.loading
     text-align: center
+
+  &.question-enter
+    margin-bottom: -$question-height
+  &.question-enter.question-enter-active
+    margin-bottom: $question-margin
+
 
 .options
   padding: 0

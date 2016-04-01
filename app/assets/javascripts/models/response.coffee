@@ -29,7 +29,6 @@ class @Response
 
   refresh: ->
     oldState = @state
-    @view.setState(processing: true)
 
     $.ajax '/responses',
       method: 'POST'
@@ -47,6 +46,13 @@ class @Response
       if @state == oldState
         @state = data.response
         @updateView()
+
+  addPlaceholderQuestion: ->
+    @state.questions.push
+      text: 'Laden ...'
+      answer_option_set:
+        answer_options: []
+    @updateView()
 
   updateView: ->
     @view.setState(response: @state, processing: false)
@@ -76,4 +82,5 @@ class @Response
   setAnswer: (key, value) ->
     @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
+    @addPlaceholderQuestion()
     @refresh()
