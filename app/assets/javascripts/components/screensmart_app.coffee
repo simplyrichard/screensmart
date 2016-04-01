@@ -17,7 +17,7 @@
     {div, h1, p} = React.DOM
 
     div
-      className: 'app'
+      className: 'container'
       div
         className: 'debug'
         p
