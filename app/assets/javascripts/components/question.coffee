@@ -3,7 +3,7 @@
 @Question = React.createClass
   displayName: 'Question'
 
-  onAnswerOptionClick: (event) ->
+  onOptionClick: (event) ->
     question = event.target
     @props.onChange(question.name, question.value)
 
@@ -28,7 +28,7 @@
               name: question_key
               id: key
               value: answer_option.value
-              onClick: @onAnswerOptionClick
+              onClick: @onOptionClick
             label
               className: 'text'
               htmlFor: key

@@ -28,7 +28,5 @@
           "variance: #{variance}"
       React.createElement QuestionList,
         onAnswerChange: (key, value) => @model.setAnswer(key, value)
-        questions: questions
         processing: @state.processing
-      if done
-        "Done. estimate: #{estimate}, variance: #{variance}"
+        response: @state.response

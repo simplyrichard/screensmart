@@ -28,8 +28,6 @@ class @Response
     answerValues
 
   refresh: ->
-    oldState = @state
-
     $.ajax '/responses',
       method: 'POST'
       dataType: 'json'
@@ -41,11 +39,8 @@ class @Response
     .fail (xhr, status, error) ->
       console.log("Failure: #{status}, #{error}")
     .done (data) =>
-      # Ignore server response if user made changes
-      # during the (sometimes slow) request
-      if @state == oldState
-        @state = data.response
-        @updateView()
+      @state = data.response
+      @updateView()
 
   addPlaceholderQuestion: ->
     @state.questions.push
@@ -55,7 +50,7 @@ class @Response
     @updateView()
 
   updateView: ->
-    @view.setState(response: @state, processing: false)
+    @view.setState(response: @state)
 
   questionByKey: (key) ->
     result = null
