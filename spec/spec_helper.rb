@@ -45,6 +45,10 @@ RSpec.configure do |config|
     VCR.use_cassette('screensmart') { example.run }
   end
 
+  if ENV['CIRCLE_ARTIFACTS']
+    Capybara.save_and_open_page_path = "#{ENV['CIRCLE_ARTIFACTS']}/screenshots"
+  end
+
   OpenCPU.configure do |opencpu|
     opencpu.endpoint_url = 'https://opencpu.roqua-staging.nl/ocpu'
     opencpu.username     = 'deploy'
