@@ -3,36 +3,10 @@ guard 'livereload' do
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
-
-  extensions = {
-    css: :css,
-    scss: :css,
-    sass: :css,
-    js: :js,
-    coffee: :js,
-    html: :html,
-    png: :png,
-    gif: :gif,
-    jpg: :jpg,
-    jpeg: :jpeg,
-    # less: :less, # uncomment if you want LESS stylesheets done in browser
-  }
-
-  # file types LiveReload may optimize refresh for
-  compiled_exts = extensions.values.uniq
-  watch(%r{public/.+\.(#{compiled_exts * '|'})})
-
-  extensions.each do |ext, type|
-    watch(%r{
-          (?:app|vendor)
-          (?:/assets/\w+/(?<path>[^.]+) # path+base without extension
-           (?<ext>\.#{ext})) # matching extension (must be first encountered)
-          (?:\.\w+|$) # other extensions
-          }x) do |m|
-      path = m[1]
-      "/assets/#{path}.#{type}"
-    end
-  end
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg|js|coffee))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(?:app|vendor)(\/assets\/\w+\/(.*)\.(?:css|sass|scss|less)).*}) { |m| "/assets/#{m[1]}.css" }
+  watch(%r{spec/javascripts/.*})
 end
 
 guard :rspec, cmd: 'bundle exec rspec' do
