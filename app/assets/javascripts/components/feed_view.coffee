@@ -3,6 +3,9 @@
 @FeedView = React.createClass
   displayName: 'FeedView'
 
+  componentDidUpdate: ->
+    window.scrollTo(0, @getDOMNode().offsetHeight)
+
   render: ->
     CSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup)
 
