@@ -29,6 +29,7 @@
               id: key
               value: answer_option.value
               onClick: @onOptionClick
+              disabled: !@props.editable
             label
               className: 'text'
               htmlFor: key

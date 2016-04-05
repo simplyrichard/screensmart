@@ -4,19 +4,21 @@ class @FeedBuilder
     @response = response
 
   getReactComponents: ->
+    { questions, loading, done, setAnswer } = @response
     elements = []
 
-    for question in @response.questions
+    for question in questions
       elements.push React.createElement Question,
         question: question
         key: elements.length
-        onChange: @response.setAnswer
+        onChange: setAnswer
+        editable: !done
 
-    if @response.loading
+    if loading
       elements.push React.createElement LoadingIndicator,
         key: elements.length
 
-    if @response.done
+    if done
       elements.push React.createElement Outcome,
         key: elements.length
         response: @response
