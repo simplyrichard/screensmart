@@ -16,13 +16,11 @@ header
 .app
   @include outer-container
 
-.feed-wrapper
-  margin-top: $logo-height
-  @include span-columns(8)
-  @include shift(2)
   .feed
+    margin-top: $logo-height
+    @include span-columns(8)
+    @include shift(2)
     overflow: hidden
-    width: 100%
 
     .item
       background-color: $feed-item-background-color
