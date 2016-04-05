@@ -6,8 +6,7 @@ class @FeedBuilder
   getReactComponents: ->
     elements = []
 
-    questions = @response.questions
-    for question in questions
+    for question in @response.questions
       elements.push React.createElement Question,
         question: question
         key: elements.length

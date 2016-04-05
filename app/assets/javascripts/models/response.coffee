@@ -5,12 +5,15 @@ class @Response
     @refresh()
 
   setAnswer: (key, value) =>
-    @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
     @refresh()
 
   refresh: ->
     @loading = true
+
+    # to hide the last question if a previous question was edited
+    @questions = @questionsWithAnswers()
+
     @updateView()
     $.ajax '/responses',
       method: 'POST'
@@ -29,9 +32,13 @@ class @Response
 
   answerValues: ->
     answerValues = {}
-    @questions.forEach (question) ->
+    @questionsWithAnswers().forEach (question) ->
       answerValues[question.key] = parseInt(question.answer_value)
     answerValues
+
+  questionsWithAnswers: ->
+    @questions.filter (question) ->
+      question.answer_value?
 
   updateView: ->
     @view.setState response: this
@@ -52,8 +59,3 @@ class @Response
 
   addAnswerToQuestion: (key, value) ->
     @questions[@indexOf(key)].answer_value = value
-
-  removeQuestionsStartingAt: (key) ->
-    startIndex = @indexOf(key) + 1
-    elementsToRemove = @questions.length - startIndex
-    @questions.splice(startIndex, elementsToRemove)
