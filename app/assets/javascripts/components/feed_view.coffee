@@ -4,7 +4,7 @@
   displayName: 'FeedView'
 
   componentDidUpdate: ->
-    window.scrollTo(0, @getDOMNode().offsetHeight)
+    window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
 
   render: ->
     CSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup)
