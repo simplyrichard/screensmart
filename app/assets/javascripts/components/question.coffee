@@ -1,6 +1,6 @@
-{div, h1, p, ul, li, input, label, i} = React.DOM
+React = require 'react'
 
-@Question = React.createClass
+module.exports = React.createClass
   displayName: 'Question'
 
   onOptionClick: (event) ->
@@ -9,6 +9,7 @@
 
   render: ->
     {text, answer_option_set} = @props.question
+    {div, h1, p, ul, li, input, label, i} = React.DOM
     question_key = @props.question.key
 
     div

@@ -1,4 +1,7 @@
-class @Response
+reqwest = require 'reqwest'
+csrfToken = require './csrf_token'
+
+module.exports = class Response
   constructor: (view) ->
     @view = view
     @questions = []
@@ -15,20 +18,21 @@ class @Response
     @questions = @questionsWithAnswers()
 
     @updateView()
-    $.ajax '/responses',
-      method: 'POST'
-      dataType: 'json'
+    reqwest
+      url: 'responses'
+      type: 'json'
+      method: 'post'
       contentType: 'application/json'
       data: JSON.stringify
         answer_values: @answerValues()
       headers:
-        'X-CSRF-Token': @view.props.csrfToken
-    .fail (xhr, status, error) ->
-      console.log("Failure: #{status}, #{error}")
-    .done (data) =>
-      {@questions, @estimate, @variance, @done} = data.response
-      @loading = false
-      @updateView()
+        'X-CSRF-Token': csrfToken
+      error: (error) ->
+        console.log("Failure: #{error}")
+      success: (data) =>
+        {@questions, @estimate, @variance, @done} = data.response
+        @loading = false
+        @updateView()
 
   answerValues: ->
     answerValues = {}

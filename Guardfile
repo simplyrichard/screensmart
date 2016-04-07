@@ -72,3 +72,9 @@ guard :bundler do
   # Assume files are symlinked from somewhere
   files.each { |file| watch(helper.real_path(file)) }
 end
+
+guard :npm do
+  watch('package.json')
+  # Uncomment next line if your Gemfile contains the `gemspec' command.
+  # watch(/^.+\.gemspec/)
+end

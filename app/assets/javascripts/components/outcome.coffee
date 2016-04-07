@@ -1,10 +1,11 @@
-{div, i, p} = React.DOM
+React = require 'react'
 
-@Outcome = React.createClass
+module.exports = React.createClass
   displayName: 'Outcome'
 
   render: ->
     {estimate, variance} = @props.response
+    {div, i, p} = React.DOM
 
     div
       className: 'outcome'

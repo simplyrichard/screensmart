@@ -20,7 +20,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
 gem 'font-awesome-rails'
-gem 'react-rails', '~> 1.6.0'
+gem 'browserify-rails', '~> 3.0.1'
 
 gem 'opencpu'
 
@@ -45,6 +45,7 @@ group :development do
   gem 'guard-livereload',    '~> 2.4.0'
   gem 'guard-coffeelint'
   gem 'guard-bundler'
+  gem 'guard-npm'
 end
 
 group :test do

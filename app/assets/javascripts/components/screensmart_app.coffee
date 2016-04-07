@@ -1,4 +1,9 @@
-@ScreensmartApp = React.createClass
+React = require 'react'
+FeedView = require './feed_view'
+FeedBuilder = require './feed_builder'
+Response = require '../models/response'
+
+module.exports = React.createClass
   displayName: 'ScreensmartApp'
 
   componentWillMount: ->

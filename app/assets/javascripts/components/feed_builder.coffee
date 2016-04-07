@@ -1,5 +1,10 @@
+React = require 'react'
+Question = require './question'
+LoadingIndicator = require './loading_indicator'
+Outcome = require './outcome'
+
 # Builds an array of React components based on a Response object
-class @FeedBuilder
+module.exports = class FeedBuilder
   constructor: (response) ->
     @response = response
 

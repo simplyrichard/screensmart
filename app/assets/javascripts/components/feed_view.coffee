@@ -1,22 +1,19 @@
-{div} = React.DOM
+React = require 'react'
+ReactDOM = require 'react-dom'
 
-@FeedView = React.createClass
+module.exports = React.createClass
   displayName: 'FeedView'
 
   componentDidUpdate: ->
     window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
 
   render: ->
-    CSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup)
+    {div} = React.DOM
 
     div
       className: 'feed'
-      CSSTransitionGroup
-        transitionName: 'item'
-        transitionEnterTimeout: 0
-        transitionLeaveTimeout: 0.001
-        @props.children.map (child) ->
-          div
-            key: child.key
-            className: 'item'
-            child
+      @props.children.map (child) ->
+        div
+          key: child.key
+          className: 'item'
+          child
