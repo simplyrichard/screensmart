@@ -1,14 +1,3 @@
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg|js|coffee))).*}) { |m| "/assets/#{m[3]}" }
-  watch(%r{(?:app|vendor)(\/assets\/\w+\/(.*)\.(?:css|sass|scss|less)).*}) { |m| "/assets/#{m[1]}.css" }
-  watch(%r{spec/javascripts/.*})
-end
-
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
