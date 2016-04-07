@@ -42,7 +42,6 @@ group :development do
   gem 'guard',               '~> 2.13.0'
   gem 'guard-rspec',         '~> 4.6.4'
   gem 'guard-rubocop',       '~> 1.1'
-  gem 'guard-livereload',    '~> 2.4.0'
   gem 'guard-coffeelint'
   gem 'guard-bundler'
   gem 'guard-npm'
