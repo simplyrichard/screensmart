@@ -44,7 +44,8 @@ group :development do
   gem 'guard-rubocop',       '~> 1.1'
   gem 'guard-coffeelint'
   gem 'guard-bundler'
-  gem 'guard-npm'
+  gem 'guard-npm', github: 'timraasveld/guard-npm', branch: 'add-commandline-option'
+  gem 'guard-webpack'
 end
 
 group :test do

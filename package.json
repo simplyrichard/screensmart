@@ -1,12 +1,14 @@
 {
   "dependencies": {
-    "browserify": "~10.2.4",
-    "browserify-incremental": "^3.0.1",
     "coffeeify": "^2.0.1",
     "react": "^0.14.8",
     "reqwest": "^2.0.5"
   },
   "engines": {
     "node": ">= 0.10"
+  },
+  "devDependencies": {
+    "coffee-loader": "^0.7.2",
+    "webpack": "^1.12.14"
   }
 }

@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/timraasveld/guard-npm.git
+  revision: 2ec1780ca805de30b9e9a4f535ae9ce3f464168a
+  branch: add-commandline-option
+  specs:
+    guard-npm (1.1.0)
+      guard (>= 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -116,8 +124,6 @@ GEM
       colorize (~> 0.7)
       guard (~> 2.0)
     guard-compat (1.2.1)
-    guard-npm (1.1.0)
-      guard (>= 2.0)
     guard-rspec (4.6.4)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -125,6 +131,8 @@ GEM
     guard-rubocop (1.2.0)
       guard (~> 2.0)
       rubocop (~> 0.20)
+    guard-webpack (0.1.2)
+      guard (< 3.0)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -334,9 +342,10 @@ DEPENDENCIES
   guard (~> 2.13.0)
   guard-bundler
   guard-coffeelint
-  guard-npm
+  guard-npm!
   guard-rspec (~> 4.6.4)
   guard-rubocop (~> 1.1)
+  guard-webpack
   haml-rails (~> 0.9)
   jquery-rails
   neat (~> 1.7.3)

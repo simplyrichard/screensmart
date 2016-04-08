@@ -62,8 +62,10 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
-guard :npm do
+guard :npm, cli: '--loglevel error' do
   watch('package.json')
   # Uncomment next line if your Gemfile contains the `gemspec' command.
   # watch(/^.+\.gemspec/)
 end
+
+guard :webpack, d: true, config: 'webpack.config.js'
