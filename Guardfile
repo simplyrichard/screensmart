@@ -5,6 +5,7 @@ guard 'livereload' do
   watch(%r{config/locales/.+\.yml})
   # Rails Assets Pipeline
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg|js|coffee))).*}) { |m| "/assets/#{m[3]}" }
+  watch(%r{(?:app|vendor)(\/assets\/\w+\/(.*)\.(?:css|sass|scss|less)).*}) { |m| "/assets/#{m[1]}.css" }
   watch(%r{spec/javascripts/.*})
 end
 

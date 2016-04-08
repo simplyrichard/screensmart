@@ -1,23 +1,18 @@
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
-  componentWillMount: ->
-    @model = new Response(this)
+  propTypes:
+    csrfToken: React.PropTypes.string.isRequired
 
-  getInitialState: ->
-    response:
-      questions: []
-      estimate: 0.0
-      variance: 0.0
-      done: false
-      processing: false
+  componentWillMount: ->
+    @setState response: new Response(this)
 
   render: ->
     {estimate, variance, questions, done} = @state.response
     {div, h1, p} = React.DOM
 
     div
-      className: 'app'
+      className: 'container'
       div
         className: 'debug'
         p
@@ -26,9 +21,6 @@
         p
           className: 'variance'
           "variance: #{variance}"
-      React.createElement QuestionList,
-        onAnswerChange: (key, value) => @model.setAnswer(key, value)
-        questions: questions
-        processing: @state.processing
-      if done
-        "Done. estimate: #{estimate}, variance: #{variance}"
+      React.createElement FeedView,
+        null
+        new FeedBuilder(@state.response).getReactComponents()
