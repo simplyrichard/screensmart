@@ -15,8 +15,8 @@ rails server
 ```
 
 # Deployment
-## Heroku (until our own server is done)
-`git push heroku master`
+## Staging ([http://screensmart.herokuapp.com/](http://screensmart.herokuapp.com/))
+Push to master and it will be automatically deployed when all checks pass.
 
 ## Own server (WIP)
 In your projects directory:
