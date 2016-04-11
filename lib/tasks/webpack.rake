@@ -3,7 +3,6 @@ namespace :webpack do
   task :compile do
     cmd = 'webpack --config config/webpack/production.config.js --json'
     output = `#{cmd}`
-    puts output
 
     stats = JSON.parse(output)
 
