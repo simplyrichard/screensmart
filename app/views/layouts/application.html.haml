@@ -11,4 +11,5 @@
         = image_tag 'screensmart.png'
 
     = yield
-    = javascript_include_tag 'bundle'
+    = webpack_manifest_script
+    = webpack_bundle_tag

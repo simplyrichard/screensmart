@@ -47,7 +47,7 @@ guard :rubocop do
 end
 
 guard :coffeelint, config_file: 'config/coffeelint.json' do
-  watch %r{^app/assets/javascripts/.*\.coffee$}
+  watch %r{^app/client/javascripts/.*\.coffee$}
 end
 
 guard :bundler do
@@ -68,4 +68,4 @@ guard :npm, cli: '--loglevel error' do
   # watch(/^.+\.gemspec/)
 end
 
-guard :webpack, d: true, config: 'webpack.config.js'
+guard :webpack, d: true, config: 'config/webpack/development.config.js'

@@ -21,4 +21,5 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.log_formatter = ::Logger::Formatter.new
+  config.webpack[:use_manifest] = true
 end

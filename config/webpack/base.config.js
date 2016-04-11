@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 
 var config = module.exports = {
-  context: __dirname,
+  context: path.join(__dirname, '../', '../'),
   entry: './app/client/javascripts/entry_point.js',
 
   output: {
-    path: path.join(__dirname, 'app', 'assets', 'javascripts'),
+    path: './app/assets/javascripts',
     filename: 'bundle.js',
     publicPath: '/assets',
   },
@@ -19,5 +19,7 @@ var config = module.exports = {
     loaders: [
       { test: /\.coffee$/, loader: 'coffee-loader' },
     ],
-  }
+  },
+
+  plugins: [],
 };
