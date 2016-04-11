@@ -3,5 +3,6 @@ machine:
     version: 2.2.3
 test:
   override:
+    - bundle exec rake webpack:compile
     - bundle exec rspec
     - bundle exec rubocop
