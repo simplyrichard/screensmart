@@ -22,4 +22,4 @@
 .byebug_history
 
 /node_modules
-/app/assets/javascripts # Compiled from client/javascripts
+/app/assets/javascripts/* # Compiled from client/javascripts
