@@ -62,9 +62,6 @@ GEM
     bourbon (4.2.6)
       sass (~> 3.4)
       thor (~> 0.19)
-    browserify-rails (3.0.1)
-      railties (>= 4.0.0, < 5.0)
-      sprockets (>= 3.5.2)
     builder (3.2.2)
     byebug (8.2.2)
     capybara (2.6.2)
@@ -90,7 +87,6 @@ GEM
       coffee-script
       execjs
       json
-    colorize (0.7.7)
     concurrent-ruby (1.0.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -120,9 +116,6 @@ GEM
       bundler (~> 1.0)
       guard (~> 2.2)
       guard-compat (~> 1.1)
-    guard-coffeelint (0.1.4)
-      colorize (~> 0.7)
-      guard (~> 2.0)
     guard-compat (1.2.1)
     guard-rspec (4.6.4)
       guard (~> 2.1)
@@ -330,7 +323,6 @@ DEPENDENCIES
   appsignal (~> 0.11.17)
   awesome_print (~> 1.6)
   bourbon
-  browserify-rails (~> 3.0.1)
   byebug
   capybara (~> 2.6.2)
   capybara-screenshot (~> 1.0.11)
@@ -341,7 +333,6 @@ DEPENDENCIES
   font-awesome-rails
   guard (~> 2.13.0)
   guard-bundler
-  guard-coffeelint
   guard-npm!
   guard-rspec (~> 4.6.4)
   guard-rubocop (~> 1.1)

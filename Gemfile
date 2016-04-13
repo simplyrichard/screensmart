@@ -20,7 +20,6 @@ gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
 gem 'font-awesome-rails'
-gem 'browserify-rails', '~> 3.0.1'
 
 gem 'opencpu'
 
@@ -42,7 +41,6 @@ group :development do
   gem 'guard',               '~> 2.13.0'
   gem 'guard-rspec',         '~> 4.6.4'
   gem 'guard-rubocop',       '~> 1.1'
-  gem 'guard-coffeelint'
   gem 'guard-bundler'
   gem 'guard-npm', github: 'timraasveld/guard-npm', branch: 'add-commandline-option'
   gem 'guard-webpack'

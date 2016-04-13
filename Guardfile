@@ -46,10 +46,6 @@ guard :rubocop do
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
 
-guard :coffeelint, config_file: 'config/coffeelint.json' do
-  watch %r{^app/client/javascripts/.*\.coffee$}
-end
-
 guard :bundler do
   require 'guard/bundler'
   require 'guard/bundler/verify'

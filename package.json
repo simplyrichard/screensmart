@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "coffeeify": "^2.0.1",
-    "es5-shim-sham": "0.0.1",
+    "es5-shim": "^4.5.8",
     "react": "^0.14.8",
     "reqwest": "^2.0.5"
   },
