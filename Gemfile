@@ -42,7 +42,7 @@ group :development do
   gem 'guard-rspec',         '~> 4.6.4'
   gem 'guard-rubocop',       '~> 1.1'
   gem 'guard-bundler'
-  gem 'guard-npm', github: 'timraasveld/guard-npm', branch: 'add-commandline-option'
+  gem 'guard-npm', github: 'timraasveld/guard-npm', ref: 'd0de2f317ae12d9cac19b5cd8324626c0c57a207'
   gem 'guard-webpack'
 end
 
