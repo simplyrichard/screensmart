@@ -21,5 +21,5 @@ var config = module.exports = {
     ]
   },
 
-  plugins: [],
+  plugins: []
 };

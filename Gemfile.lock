@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/timraasveld/guard-npm.git
-  revision: 2ec1780ca805de30b9e9a4f535ae9ce3f464168a
-  branch: add-commandline-option
+  revision: d0de2f317ae12d9cac19b5cd8324626c0c57a207
+  ref: d0de2f317ae12d9cac19b5cd8324626c0c57a207
   specs:
     guard-npm (1.1.0)
       guard (>= 2.0)
