@@ -8,17 +8,17 @@ var config = module.exports = {
   output: {
     path: './app/assets/javascripts',
     filename: 'bundle.js',
-    publicPath: '/assets',
+    publicPath: '/assets'
   },
 
   resolve: {
-    extensions: ['', '.coffee', '.js'],
+    extensions: ['', '.coffee', '.js']
   },
 
   module: {
     loaders: [
-      { test: /\.coffee$/, loader: 'coffee-loader' },
-    ],
+      { test: /\.coffee$/, loader: 'coffee-loader' }
+    ]
   },
 
   plugins: [],

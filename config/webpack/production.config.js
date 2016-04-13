@@ -11,7 +11,7 @@ config.plugins.push(
   new webpack.optimize.CommonsChunkPlugin('common', 'common-[chunkhash].js'),
   new ChunkManifestPlugin({
     filename: 'webpack-common-manifest.json',
-    manfiestVariable: 'webpackBundleManifest',
+    manifestVariable: 'webpackBundleManifest'
   }),
   new webpack.optimize.UglifyJsPlugin({
     compress: { warnings: false }
