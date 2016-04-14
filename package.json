@@ -12,5 +12,8 @@
     "chunk-manifest-webpack-plugin": "0.0.1",
     "coffee-loader": "^0.7.2",
     "webpack": "^1.12.14"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/webpack/bin/webpack.js --config config/webpack/production.config.js --json"
   }
 }
