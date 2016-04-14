@@ -7,7 +7,7 @@ class AppController < ApplicationController
 
   def webpack_bundle_tag
     src = if Rails.configuration.webpack[:use_manifest]
-            filename = Rails.configuration.webpack[:asset_manifest]
+            filename = Rails.configuration.webpack[:common_manifest]
             "#{compute_asset_host}/assets/#{filename}"
           else
             "#{compute_asset_host}/assets/bundle"
