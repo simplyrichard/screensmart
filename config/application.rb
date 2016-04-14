@@ -18,5 +18,6 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
+    config.webpack = {}
   end
 end
