@@ -27,7 +27,7 @@ namespace :webpack do
   end
 
   def binary_path
-    puts `which webpack`
+    Logger.new(STDOUT).info `which webpack`
     `which webpack`.strip
   end
 end
