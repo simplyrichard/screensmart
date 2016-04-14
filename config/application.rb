@@ -19,5 +19,6 @@ Bundler.require(*Rails.groups)
 module Screensmart
   class Application < Rails::Application
     config.webpack = {}
+    config.assets.enabled = false
   end
 end
