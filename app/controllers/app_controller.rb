@@ -6,13 +6,12 @@ class AppController < ApplicationController
   respond_to :html
 
   def webpack_bundle_tag
-    src =
-      if Rails.configuration.webpack[:use_manifest]
-        "#{compute_asset_host}/assets/bundle"
-      else
-        "#{compute_asset_host}/assets/#{bundle}-bundle"
-      end
-
+    src = if Rails.configuration.webpack[:use_manifest]
+            filename = Rails.configuration.webpack[:asset_manifest]
+            "#{compute_asset_host}/assets/#{filename}"
+          else
+            "#{compute_asset_host}/assets/bundle"
+          end
     javascript_include_tag(src)
   end
   helper_method :webpack_bundle_tag
