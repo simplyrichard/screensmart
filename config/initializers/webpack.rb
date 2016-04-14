@@ -1,5 +1,4 @@
 if Rails.configuration.webpack[:use_manifest]
-  raise 'test'
   asset_manifest = Rails.root.join('public', 'assets', 'webpack-asset-manifest.json')
   common_manifest = Rails.root.join('public', 'assets', 'webpack-common-manifest.json')
 
