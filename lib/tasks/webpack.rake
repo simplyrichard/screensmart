@@ -1,7 +1,7 @@
 namespace :webpack do
   desc 'compile bundles using webpack'
   task :compile => [:npm_install] do
-    system "#{webpack_command} --config config/webpack/production.config.js --json"
+    output = system "#{webpack_command} --config config/webpack/production.config.js --json" || raise('webpack failed')
 
     stats = JSON.parse(output)
 
