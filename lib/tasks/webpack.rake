@@ -4,6 +4,7 @@ namespace :webpack do
     cmd = "#{binary_path} --config config/webpack/production.config.js --json"
     output = `#{cmd}`
 
+
     stats = JSON.parse(output)
 
     File.open('./public/assets/webpack-asset-manifest.json', 'w') do |f|
