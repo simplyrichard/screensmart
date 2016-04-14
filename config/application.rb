@@ -19,7 +19,6 @@ Bundler.require(*Rails.groups)
 module Screensmart
   class Application < Rails::Application
     config.webpack = {
-      use_manifest: true,
       asset_manifest: {},
       common_manifest: {}
     }
