@@ -1,6 +1,6 @@
 namespace :webpack do
   desc 'compile bundles using webpack'
-  task :compile => [:npm_install] do
+  task compile: [:npm_install] do
   end
 
   task :npm_install do
