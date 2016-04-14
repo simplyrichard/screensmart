@@ -1,7 +1,7 @@
 namespace :webpack do
   desc 'compile bundles using webpack'
-  task :compile => [:ensure_webpack_installed, :npm_install] do
-    cmd = "#{binary_path} --config config/webpack/production.config.js --json"
+  task :compile => [:npm_install] do
+    cmd = "#{webpack_command} --config config/webpack/production.config.js --json"
     output = `#{cmd}`
 
     stats = JSON.parse(output)
@@ -15,19 +15,7 @@ namespace :webpack do
     system 'npm install'
   end
 
-  task :ensure_webpack_installed do
-    next if installed?
-
-    system 'npm install -g webpack'
-    raise 'Something went wrong installing webpack' unless installed?
-  end
-
-  def installed?
-    binary_path.present?
-  end
-
-  def binary_path
-    Logger.new(STDOUT).info `which webpack`
-    `which webpack`.strip
+  def webpack_command
+    'node node_modules/webpack/bin/webpack.js'
   end
 end
