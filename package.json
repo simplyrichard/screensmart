@@ -15,6 +15,6 @@
     "webpack": "^1.12.14"
   },
   "scripts": {
-    "postinstall": "node ./node_modules/webpack/bin/webpack.js --config config/webpack/production.config.js"
+    "postinstall": "webpack --config config/webpack/production.config.js"
   }
 }
