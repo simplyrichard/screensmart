@@ -7,4 +7,3 @@ namespace :webpack do
     system 'npm install'
   end
 end
-
