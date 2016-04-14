@@ -27,7 +27,7 @@ namespace :webpack do
   end
 
   def binary_path
-    system 'which webpack'
+    puts `which webpack`
     `which webpack`.strip
   end
 end
