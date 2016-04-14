@@ -1,6 +1,6 @@
 namespace :webpack do
   desc 'compile bundles using webpack'
-  task :compile do
+  task :compile => [:ensure_installed] do
     cmd = 'webpack --config config/webpack/production.config.js --json'
     output = `#{cmd}`
 
@@ -9,5 +9,10 @@ namespace :webpack do
     File.open('./public/assets/webpack-asset-manifest.json', 'w') do |f|
       f.write stats['assetsByChunkName'].to_json
     end
+  end
+
+  task :ensure_installed do
+    next if `which webpack`.present?
+    system 'npm install -g webpack'
   end
 end
