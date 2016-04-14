@@ -3,7 +3,6 @@ var path = require('path');
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 var webpack = require('webpack');
 
-
 config.output.path = path.join(config.context, 'public', 'assets');
 config.output.filename = '[name]-bundle-[chunkhash].js';
 config.output.chunkFilename = '[id]-bundle-[chunkhash].js';
