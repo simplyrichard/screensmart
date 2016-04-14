@@ -7,12 +7,12 @@
     "coffeeify": "^2.0.1",
     "es5-shim": "^4.5.8",
     "react": "^0.14.8",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "webpack": "^1.12.14"
   },
   "devDependencies": {
     "chunk-manifest-webpack-plugin": "0.0.1",
-    "coffee-loader": "^0.7.2",
-    "webpack": "^1.12.14"
+    "coffee-loader": "^0.7.2"
   },
   "scripts": {
     "postinstall": "ls; ls node_modules; ./node_modules/.bin/webpack --config config/webpack/production.config.js"
