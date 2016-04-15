@@ -4,6 +4,6 @@ if Rails.configuration.webpack[:use_manifest]
   if File.exist?(common_manifest)
     Rails.configuration.webpack[:common_manifest] = JSON.parse(
       File.read(common_manifest)
-    ).values.first
+    ).with_indifferent_access
   end
 end
