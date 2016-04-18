@@ -26,10 +26,6 @@ gem 'opencpu'
 
 gem 'dotenv-rails'
 
-group :production do
-  gem 'rails_12factor'
-end
-
 group :development, :test do
   gem 'byebug'
   gem 'awesome_print', '~> 1.6'
