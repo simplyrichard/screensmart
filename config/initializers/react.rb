@@ -1,1 +1,1 @@
-Application.config.react.addons = true
+Rails.application.config.react.addons = true
