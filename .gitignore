@@ -20,3 +20,4 @@
 .env.local
 .env.development
 .byebug_history
+npm-debug.log
