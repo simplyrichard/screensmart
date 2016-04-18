@@ -20,7 +20,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
 gem 'font-awesome-rails'
-gem 'react-rails', '~> 1.6.0'
+gem 'react-rails', '~> 1.6.2'
 
 gem 'opencpu'
 

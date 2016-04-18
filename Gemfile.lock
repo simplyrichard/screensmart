@@ -354,7 +354,7 @@ DEPENDENCIES
   poltergeist (~> 1.9.0)
   rack-haproxy_status (~> 0.8.1)
   rails (= 4.2.6)
-  react-rails (~> 1.6.0)
+  react-rails (~> 1.6.2)
   responders
   rspec-collection_matchers (~> 1.1.2)
   rspec-rails (~> 3.4.2)
