@@ -18,6 +18,5 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
-    Application.config.react.addons = true
   end
 end
