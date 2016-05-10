@@ -23,8 +23,9 @@ class @Response
         answer_values: @answerValues()
       headers:
         'X-CSRF-Token': @view.props.csrfToken
-    .fail (xhr, status, error) ->
-      console.log("Failure: #{status}, #{error}")
+    .fail (error) =>
+      throw error
+      @view.showMessage "Onbekende fout. Mail naar support@roqua.nl voor hulp"
     .done (data) =>
       {@questions, @estimate, @variance, @done} = data.response
       @loading = false

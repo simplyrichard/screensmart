@@ -43,7 +43,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    appsignal (0.11.18)
+    appsignal (1.1.5)
       rack
       thread_safe
     arel (6.0.3)
@@ -330,7 +330,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   activeresource
-  appsignal (~> 0.11.17)
+  appsignal
   awesome_print (~> 1.6)
   bourbon
   byebug
