@@ -1,10 +1,10 @@
-onAnswerChange: (key, value) ->
-  Screensmart.store.dispatch Screensmart.actions.setAnswer(key, value)
+onAnswerChange = (response, key, value) ->
+  Screensmart.store.dispatch Screensmart.Actions.setAnswer(response, key, value)
 
 mapStateToProps = (state) ->
   children: new FeedBuilder(
     response: state.response,
-    onAnswerChange: @onAnswerChange
+    onAnswerChange: onAnswerChange
   ).getReactComponents()
 
 mapDispatchToProps = (dispatch) ->

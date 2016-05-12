@@ -9,7 +9,7 @@ Screensmart.reducer = Redux.combineReducers
       else
         messages
 
-  response: (response = { questions: [], loading: true, done: false }, action) ->
+  response: (response, action) ->
     switch action.type
       when 'UPDATE_RESPONSE'
         questions: response.questions
@@ -20,7 +20,8 @@ Screensmart.reducer = Redux.combineReducers
         loading: false
         done: action.response.done
       when 'SET_ANSWER'
-        # TODO implement
-        response
+        questions: response.questions
+        loading: true
+        done: response.done
       else
-        response
+        { questions: [], loading: true, done: false }
