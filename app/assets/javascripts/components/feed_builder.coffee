@@ -14,6 +14,7 @@ class @FeedBuilder
         key: elements.length
         disabled: done
         onChange: @onAnswerChange
+        onAnswerChange: @onAnswerChange
 
     if loading
       elements.push React.createElement LoadingIndicator,

@@ -1,9 +1,6 @@
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
-  componentDidMount: ->
-    Screensmart.store.dispatch Screensmart.Actions.updateResponse()
-
   render: ->
     React.DOM.div
       className: 'app'

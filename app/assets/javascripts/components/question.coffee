@@ -8,7 +8,7 @@
 
   onOptionClick: (event) ->
     question = event.target
-    @props.onChange(question.name, question.value)
+    @props.onAnswerChange(question.name, question.value)
 
   className: ->
     className= 'question'

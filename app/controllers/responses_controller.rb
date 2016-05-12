@@ -4,7 +4,6 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
     render json: ResponseSerializer.new(@response).as_json
-    1 / 0
   end
 
   private
