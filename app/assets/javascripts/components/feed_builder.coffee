@@ -1,18 +1,19 @@
 # Builds an array of React components based on a Response object
 class @FeedBuilder
-  constructor: (response) ->
-    @response = response
+  constructor: (options) ->
+    @response = options.response
+    @onAnswerChange = options.onAnswerChange
 
   getReactComponents: ->
-    { questions, loading, done, setAnswer } = @response
+    { questions, loading, done } = @response
     elements = []
 
     for question in questions
       elements.push React.createElement Question,
         question: question
         key: elements.length
-        onChange: setAnswer
         disabled: done
+        onChange: @onAnswerChange
 
     if loading
       elements.push React.createElement LoadingIndicator,

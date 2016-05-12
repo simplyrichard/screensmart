@@ -36,4 +36,5 @@ appsignal        = new Appsignal
 window.appsignal = appsignal
 
 window.onerror = (message, filename, lineno, colno, error) ->
+  Screensmart.store.dispatch Screensmart.Actions.addMessage('Onbekende fout. Mail naar <a href="mailto:support@roqua.nl">support@roqua.nl</a> voor hulp')
   appsignal.sendError(error) if error

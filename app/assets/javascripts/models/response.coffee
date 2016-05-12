@@ -24,7 +24,6 @@ class @Response
       headers:
         'X-CSRF-Token': @view.props.csrfToken
     .fail (error) =>
-      throw error
       @view.showMessage "Onbekende fout. Mail naar support@roqua.nl voor hulp"
     .done (data) =>
       {@questions, @estimate, @variance, @done} = data.response
@@ -46,13 +45,13 @@ class @Response
 
   questionByKey: (key) ->
     result = null
-    @questions.some((question) ->
+    @questions.some (question) ->
       if question.key == key
         result = question
         true
       else
         false
-    )
+
     result
 
   indexOf: (key) ->

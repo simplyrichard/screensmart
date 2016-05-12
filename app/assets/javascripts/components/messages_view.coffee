@@ -1,9 +1,6 @@
 @MessagesView = React.createClass
   displayName: 'MessagesView'
 
-  propTypes:
-    messages: React.PropTypes.array.isRequired
-
   render: ->
     {ul, li} = React.DOM
 
