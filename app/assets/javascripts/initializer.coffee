@@ -1,2 +1,1 @@
-window.Screensmart =
-  reducers: {}
+window.Screensmart = {}
