@@ -31,6 +31,6 @@ syncResponse = (answerValues = []) ->
     headers:
       'X-CSRF-Token': window.csrfToken
   .fail (xhr, status, error) ->
-    console.log("Failure: #{status}, #{error}")
+    throw new Error error
   .done (data) ->
     Screensmart.store.dispatch Screensmart.Actions.receiveResponseUpdate(data)
