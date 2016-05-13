@@ -1,3 +1,6 @@
+merge = (originalObject, updatedProperties) ->
+  $.extend {}, originalObject, [].splice.call(arguments, 1)...
+
 Screensmart.reducer = Redux.combineReducers
   messages: (messages = [], action) ->
     switch action.type
@@ -12,16 +15,13 @@ Screensmart.reducer = Redux.combineReducers
   response: (response, action) ->
     switch action.type
       when 'UPDATE_RESPONSE'
-        questions: response.questions
-        loading: true
-        done: response.done
+        merge response, loading: true
       when 'RECEIVE_RESPONSE_UPDATE'
-        questions: action.response.questions
-        loading: false
-        done: action.response.done
+        merge response, action.response,
+                        loading: false
       when 'SET_ANSWER'
-        questions: response.questions
-        loading: true
-        done: response.done
+        merge response, loading: true
       else
-        { questions: [], loading: true, done: false }
+        questions: []
+        loading: true
+        done: false
