@@ -5,7 +5,9 @@ Screensmart.Actions =
 
   setAnswer: (response, key, value) ->
     answerValues = {}
-    response.questions.forEach (question) ->
+    filledOutQuestions = response.questions.filter (question) ->
+      question.answer_value?
+    filledOutQuestions.forEach (question) ->
       answerValues[question.key] = question.answer_value
     answerValues[key] = value
     syncResponse(answerValues)

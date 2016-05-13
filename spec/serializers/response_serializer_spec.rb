@@ -15,7 +15,7 @@ describe ResponseSerializer do
       done: false,
       questions: [{
         key: 'EL02',
-        text: 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.',
+        text: 'Vraag 1',
         answer_value: 1,
         answer_option_set: {
           id: 2,

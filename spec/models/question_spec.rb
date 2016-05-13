@@ -4,7 +4,7 @@ describe Question do
   describe '#text' do
     it 'returns the question text when an existant key is given' do
       subject.key = 'EL02'
-      expect(subject.text).to eq 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.'
+      expect(subject.text).to eq 'Vraag 1'
     end
 
     it 'raises an exception when a nonexistant key is given' do

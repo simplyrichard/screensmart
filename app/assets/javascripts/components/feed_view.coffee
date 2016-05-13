@@ -14,8 +14,8 @@
   render: ->
     div
       className: 'feed'
-      @props.children.map (child, index) ->
+      @props.children.map (child) ->
         div
-          key: index
+          key: child.key
           className: 'item'
           child
