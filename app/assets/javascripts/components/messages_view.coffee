@@ -2,12 +2,14 @@
   displayName: 'MessagesView'
 
   render: ->
-    {ul, li} = React.DOM
+    {ul, li, div} = React.DOM
 
-    ul
-      className: 'messages'
-      @props.messages.map (message, index) ->
-        li
-          className: 'message'
-          key: index
-          dangerouslySetInnerHTML: { __html: message }
+    div
+      className: 'message-container'
+      ul
+        className: 'messages'
+        @props.messages.map (message, index) ->
+          li
+            className: 'message'
+            key: index
+            dangerouslySetInnerHTML: { __html: message }

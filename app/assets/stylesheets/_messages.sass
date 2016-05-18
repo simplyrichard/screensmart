@@ -1,0 +1,23 @@
+.message-container
+  width: 100%
+  position: fixed
+  top: 0
+  left: 0
+  height: 100%
+  z-index: 1
+  .messages
+    @extend .feed
+    background-color: rgba($application-background-color, 0.8)
+    height: 100%
+    padding: 0
+    padding-top: $logo-height
+    list-style-type: none
+    overflow: hidden
+    .message
+      background-color: $message-background-color
+      border: 3px solid $message-border-color
+      border-radius: 4px
+      min-height: $message-height
+      padding: $message-padding-vertical $message-padding-horizontal
+      margin: $message-margin
+      color: $message-text-color
