@@ -6,6 +6,7 @@
 //= require react_ujs
 //= require redux
 //= require react-redux
+//= require redux-thunk
 //= require initializer
 //= require components
 //= require entry_point

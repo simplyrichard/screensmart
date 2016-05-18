@@ -14,13 +14,11 @@ Screensmart.reducer = Redux.combineReducers
 
   response: (response, action) ->
     switch action.type
-      when 'UPDATE_RESPONSE'
+      when 'SET_RESPONSE_LOADING'
         merge response, loading: true
       when 'RECEIVE_RESPONSE_UPDATE'
         merge response, action.response,
                         loading: false
-      when 'SET_ANSWER'
-        merge response, loading: true
       else
         questions: []
         loading: true

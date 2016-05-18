@@ -10,7 +10,6 @@ class @FeedBuilder
 
     for question in questions
       elements.push React.createElement Question,
-        response: @response
         question: question
         key: elements.length
         disabled: done
