@@ -2,7 +2,7 @@ describe 'Error reporting' do
   context 'Internal server error' do
     def cause_internal_server_error
       allow_any_instance_of(ResponsesController).to receive(:create) do
-        1 / 0
+        raise 'internal server error'
       end
       visit '/'
       page.execute_script("$.post('/responses')")
@@ -14,13 +14,14 @@ describe 'Error reporting' do
 
     it 'shows the error to the user' do
       expect { cause_internal_server_error }.to raise_error Capybara::Poltergeist::JavascriptError
-      expect(page).to have_content 'Onbekende fout. Mail naar support@roqua.nl voor hulp.'
+      expect(page).to have_content 'Onbekende fout. Mail naar support@roqua.nl voor hulp'
     end
   end
 
-  context 'validation error' do
+  context 'javascript error' do
     it 'shows the error to the user' do
-      page.execute_script("$.post('/responses', answer_values: { \"invalid key\": 1 })")
+      visit '/'
+      page.execute_script("$.post('/resposes', { answer_values: { 'invalid key': 1 } })")
       expect(page).to have_content 'Er ging wat mis bij het verwerken van uw antwoord'
     end
   end
