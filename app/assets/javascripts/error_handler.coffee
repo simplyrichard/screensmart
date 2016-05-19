@@ -18,4 +18,5 @@ window.onerror = (_message, _filename, _lineno, _colno, error) ->
 # Global jQuery AJAX error handler
 $(document).ajaxError (event, xhr, settings, error ) ->
   { method, url } = settings
-  throw new Error "#{method} #{url} failed: #{error}. settings: #{JSON.stringify(settings, null, '\t')}"
+  { status } = xhr
+  throw new Error "#{method} #{url} failed: #{status} #{error}. settings: #{JSON.stringify(settings, null, '\t')}"
