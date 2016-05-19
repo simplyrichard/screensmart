@@ -2,9 +2,7 @@ describe 'Error reporting' do
   unknown_error = 'Onbekende fout. Mail naar support@roqua.nl voor hulp'
   context 'Internal server error' do
     def cause_internal_server_error
-      allow_any_instance_of(ResponsesController).to receive(:create) do
-        1 / 0
-      end
+      allow_any_instance_of(ResponsesController).to receive(:create).and_raise 'internal server error'
       visit '/'
       page.execute_script "$.ajax('/responses', { method: 'POST',
                                                   async: false
