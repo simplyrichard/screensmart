@@ -6,9 +6,9 @@ describe 'Error reporting' do
         raise 'internal server error'
       end
       visit '/'
-        page.execute_script "$.ajax('/responses', { method: 'POST',
-                                                    async: false
-                                                  })"
+      page.execute_script "$.ajax('/responses', { method: 'POST',
+                                                  async: false
+                                                })"
     end
 
     # it 'reports the error to Appsignal' do

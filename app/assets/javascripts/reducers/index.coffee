@@ -15,8 +15,14 @@ Screensmart.reducer = Redux.combineReducers
   response: (response, action) ->
     switch action.type
       when 'SET_ANSWER'
-        merge responseWithoutNonFilledOutQuestions(responseWithAnswer(response, action.key, action.value)),
-              loading: true
+        merge responseWithoutNonFilledOutQuestions(
+          responseWithAnswer(
+            response,
+            action.key,
+            action.value
+          )
+        ),
+        loading: true
 
       when 'SET_RESPONSE_LOADING'
         merge response, loading: true
