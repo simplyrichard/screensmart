@@ -2,6 +2,7 @@
 //
 //= require jquery
 //= require appsignal
+//= require error_handler
 //= require react
 //= require react_ujs
 //= require redux

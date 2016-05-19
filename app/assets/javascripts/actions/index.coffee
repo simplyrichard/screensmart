@@ -35,3 +35,5 @@ syncResponse = (response) ->
       response: response
     headers:
       'X-CSRF-Token': window.csrfToken
+    error: (jqXHR, textStatus, errorThrown) ->
+      throw new Error "XHR failed with error: #{errorThrown}"
