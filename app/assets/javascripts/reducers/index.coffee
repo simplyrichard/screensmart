@@ -34,8 +34,12 @@ responseWithAnswer = (response, key, value) ->
   response
 
 indexOfQuestion = (response, key) ->
-  response.questions.findIndex (question) ->
+  response.questions.indexOf questionByKey(response, key)
+
+questionByKey = (response, key) ->
+  response.questions.filter((question) ->
     question.key == key
+  )[0]
 
 responseWithoutNonFilledOutQuestions = (response) ->
   questionsWithAnswers = response.questions.filter (question) ->

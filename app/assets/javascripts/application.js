@@ -1,3 +1,6 @@
+// # Needed for Capybara
+//= require es5-shim
+//
 //= require jquery
 //= require appsignal
 //= require error_handler
