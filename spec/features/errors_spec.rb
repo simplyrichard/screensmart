@@ -3,7 +3,7 @@ describe 'Error reporting' do
   context 'Internal server error' do
     def cause_internal_server_error
       allow_any_instance_of(ResponsesController).to receive(:create) do
-        raise 'internal server error'
+        1 / 0
       end
       visit '/'
       page.execute_script "$.ajax('/responses', { method: 'POST',
