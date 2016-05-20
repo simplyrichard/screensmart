@@ -1,23 +1,10 @@
 class @Appsignal
-  constructor: ->
-    @action = null
-    @tags   = {}
-
-  set_action: (action) ->
-    @action = action
-
-  tag_request: (tags) ->
-    for key in tags
-      @tags[key] = tags[key]
-
   sendError: (error) ->
     data = {
-      action:    @action
       message:   error.message
       name:      error.name
       backtrace: error.stack.split("\n")
       path:      window.location.pathname
-      tags:      @tags
       environment: {
         agent:         navigator.userAgent
         platform:      navigator.platform
