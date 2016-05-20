@@ -1,6 +1,6 @@
 describe 'Error reporting' do
   unknown_error = 'Onbekende fout. Mail naar support@roqua.nl voor hulp'
-  context 'Internal server error' do
+  context 'internal server error' do
     def cause_internal_server_error
       visit '/'
 
@@ -27,10 +27,7 @@ describe 'Error reporting' do
     it 'shows the error to the user' do
       def cause_javascript_error
         visit '/'
-        page.execute_script "$.ajax('/responses', { data: { answer_values: { 'invalid key': 1 } },
-                                                    method: 'POST',
-                                                    async: false
-                                                  })"
+        page.execute_script 'definitely not valid javascript code'
       end
 
       expect { cause_javascript_error }.to raise_error Capybara::Poltergeist::JavascriptError
