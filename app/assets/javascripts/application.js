@@ -1,4 +1,4 @@
-// # Needed for Capybara
+// see https://github.com/reactjs/react-rails/issues/10 for reason
 //= require es5-shim
 //
 //= require jquery
