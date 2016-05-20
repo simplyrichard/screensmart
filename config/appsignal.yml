@@ -3,6 +3,7 @@ default: &defaults
   name: "Screensmart"
   slow_request_threshold: 200
   enable_frontend_error_catching: true
+  debug: true
 
 development:
   <<: *defaults
