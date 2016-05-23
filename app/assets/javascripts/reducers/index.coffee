@@ -1,6 +1,9 @@
 merge = (originalObject, updatedProperties) ->
   $.extend {}, originalObject, [].splice.call(arguments, 1)...
 
+deepCopy = (originalObject) ->
+  $.extend(true, {}, originalObject)
+
 Screensmart.reducer = Redux.combineReducers
   messages: (messages = [], action) ->
     switch action.type
@@ -36,7 +39,8 @@ Screensmart.reducer = Redux.combineReducers
         loading: true
         done: false
 
-responseWithAnswer = (response, key, value) ->
+responseWithAnswer = (oldResponse, key, value) ->
+  response = deepCopy oldResponse
   index = indexOfQuestion(response, key)
   response.questions[index].answer_value = value
   response
@@ -49,7 +53,8 @@ questionByKey = (response, key) ->
     question.key == key
   )[0]
 
-responseWithoutNonFilledOutQuestions = (response) ->
+responseWithoutNonFilledOutQuestions = (oldResponse) ->
+  response = deepCopy oldResponse
   questionsWithAnswers = response.questions.filter (question) ->
     question.answer_value?
   response.questions = questionsWithAnswers
