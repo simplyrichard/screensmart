@@ -13,7 +13,13 @@ showUnknownError = ->
 
 window.onerror = (_message, _filename, _lineno, _colno, error) ->
   showUnknownError()
+  error.message += " store contents: #{prettyStoreContents()}"
+
   appsignal.sendError(error) if error && window.environment != 'development'
+
+prettyStoreContents = ->
+  storeContents = Screensmart.store.getState()
+  JSON.stringify(storeContents, null, 2)
 
 # Global jQuery AJAX error handler
 $(document).ajaxError (event, xhr, settings, error ) ->
