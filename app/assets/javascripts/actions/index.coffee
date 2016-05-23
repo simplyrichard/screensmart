@@ -26,9 +26,5 @@ Screensmart.Actions =
 syncResponse = (response) ->
   $.ajax '/responses',
     method: 'POST'
-    dataType: 'json'
-    contentType: 'application/json'
     data: JSON.stringify
       response: response
-    headers:
-      'X-CSRF-Token': window.csrfToken
