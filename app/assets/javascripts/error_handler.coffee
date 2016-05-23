@@ -1,5 +1,5 @@
 email = 'support@roqua.nl'
-message = "Onbekende fout. Mail naar <a href='#{email}'>#{email}</a> voor hulp"
+message = "Onbekende fout. Mail naar <a href='mailto:#{email}'>#{email}</a> voor hulp"
 
 applicationInitialized = ->
   Screensmart? && typeof Screensmart.store?.dispatch == 'function'
