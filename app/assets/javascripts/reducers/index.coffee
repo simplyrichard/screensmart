@@ -1,5 +1,5 @@
-merge = (originalObject, updatedProperties) ->
-  $.extend {}, originalObject, [].splice.call(arguments, 1)...
+merge = (objects...) ->
+  $.extend {}, objects...
 
 deepCopy = (originalObject) ->
   $.extend(true, {}, originalObject)
