@@ -5,7 +5,8 @@ document.addEventListener 'DOMContentLoaded', ->
 
   store.dispatch Screensmart.Actions.updateResponse()
 
-  ReactDOM.render React.createFactory(ReactRedux.Provider)(
-    store: store
+  provider = React.createFactory(ReactRedux.Provider)
+    store: store,
     React.createFactory(ScreensmartApp)({})
-  ), document.getElementById('root')
+
+  ReactDOM.render provider, document.getElementById('root')
