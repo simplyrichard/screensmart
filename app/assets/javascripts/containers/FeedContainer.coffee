@@ -7,9 +7,5 @@ mapStateToProps = (state) ->
     onAnswerChange: onAnswerChange
   ).getReactComponents()
 
-mapDispatchToProps = (dispatch) ->
-  {}
-
 @FeedContainer = ReactRedux.connect(
-  mapStateToProps,
-  mapDispatchToProps)(FeedView)
+  mapStateToProps)(FeedView)
