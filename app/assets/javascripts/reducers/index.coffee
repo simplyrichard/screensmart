@@ -24,8 +24,6 @@ Screensmart.reducer = Redux.combineReducers
         ),
         loading: true
 
-      when 'SET_RESPONSE_LOADING'
-        merge response, loading: true
       when 'RECEIVE_RESPONSE_UPDATE'
         merge response, action.response,
                         loading: false

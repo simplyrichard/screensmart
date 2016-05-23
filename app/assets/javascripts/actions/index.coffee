@@ -19,9 +19,6 @@ Screensmart.Actions =
       syncResponse(response).then (data) ->
         dispatch Screensmart.Actions.receiveResponseUpdate(data)
 
-  setResponseLoading: ->
-    type: 'SET_RESPONSE_LOADING'
-
   receiveResponseUpdate: (data) ->
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
