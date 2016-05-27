@@ -14,10 +14,14 @@ Screensmart.Actions =
     value: value
 
   updateResponse: ->
-    (dispatch, getState) ->
+    (dispatch, getState) =>
       response = getState().response
-      syncResponse(response).then (data) ->
-        dispatch Screensmart.Actions.receiveResponseUpdate(data)
+      dispatch @startResponseUpdate()
+      syncResponse(response).then (data) =>
+        dispatch @receiveResponseUpdate(data)
+
+  startResponseUpdate: ->
+    type: 'START_RESPONSE_UPDATE'
 
   receiveResponseUpdate: (data) ->
     type: 'RECEIVE_RESPONSE_UPDATE'

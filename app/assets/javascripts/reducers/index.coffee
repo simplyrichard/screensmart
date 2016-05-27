@@ -26,7 +26,10 @@ Screensmart.reducer = Redux.combineReducers
           )
         )
 
-        merge updatedResponse,
+        updatedResponse
+
+      when 'START_RESPONSE_UPDATE'
+        merge response,
               loading: true
 
       when 'RECEIVE_RESPONSE_UPDATE'
