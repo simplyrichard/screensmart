@@ -1,8 +1,8 @@
 merge = (objects...) ->
   $.extend {}, objects...
 
-deepCopy = (originalObject) ->
-  $.extend(true, {}, originalObject)
+deepCopy = (originalObject, into = {}) ->
+  $.extend(true, into, originalObject)
 
 Screensmart.reducer = Redux.combineReducers
   messages: (messages = [], action) ->
@@ -42,23 +42,24 @@ Screensmart.reducer = Redux.combineReducers
         loading: true
         done: false
 
-responseWithAnswer = (oldResponse, key, value) ->
-  response = deepCopy oldResponse
-  index = indexOfQuestion(response, key)
-  response.questions[index].answer_value = value
-  response
+responseWithAnswer = (response, key, value) ->
+  questions = deepCopy response.questions, []
 
-indexOfQuestion = (response, key) ->
-  response.questions.indexOf questionByKey(response, key)
+  index = indexOfQuestion(questions, key)
+  questions[index].answer_value = value
 
-questionByKey = (response, key) ->
-  response.questions.filter((question) ->
+  merge response,
+        questions: questions
+
+indexOfQuestion = (questions, key) ->
+  questions.indexOf questionByKey(questions, key)
+
+questionByKey = (questions, key) ->
+  questions.filter((question) ->
     question.key == key
   )[0]
 
-responseWithoutNonFilledOutQuestions = (oldResponse) ->
-  response = deepCopy oldResponse
-  questionsWithAnswers = response.questions.filter (question) ->
-    question.answer_value?
-  response.questions = questionsWithAnswers
-  response
+responseWithoutNonFilledOutQuestions = (response) ->
+  merge response,
+        questions: response.questions.filter (question) ->
+          question.answer_value?
