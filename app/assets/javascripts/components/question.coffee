@@ -5,6 +5,8 @@
 
   propTypes:
     question: React.PropTypes.object.isRequired
+    onAnswerChange: React.PropTypes.func.isRequired
+    editable: React.PropTypes.bool.isRequired
 
   onOptionClick: (event) ->
     question = event.target
