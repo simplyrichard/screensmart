@@ -4,7 +4,7 @@
   displayName: 'Outcome'
 
   propTypes: ->
-    response: React.PropTypes.instanceOf(Response).isRequired
+    response: React.PropTypes.object.isRequired
 
   render: ->
     {estimate, variance} = @props.response
