@@ -12,7 +12,7 @@ class @FeedBuilder
       elements.push React.createElement Question,
         question: question
         key: elements.length
-        disabled: done
+        editable: !done
         onChange: @onAnswerChange
         onAnswerChange: @onAnswerChange
 
