@@ -1,2 +1,4 @@
-= react_component 'ScreensmartApp', {csrfToken: form_authenticity_token},
-                                    class: 'app'
+:javascript
+  window.csrfToken = '#{form_authenticity_token}'
+  window.environment = '#{Rails.env}'
+#root

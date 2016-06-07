@@ -1,11 +1,29 @@
 describe 'answering questions' do
-  def answer_newest_question
-    find('.question:last-child .option:last-child').click
+  def answer_question(index, answer)
+    within ".item:nth-child(#{index}) .question" do
+      find('.option', text: answer).click
+    end
+  end
+
+  def expect_last_question_to_be(text)
+    within '.item:last-child' do
+      expect(page).to have_content text
+    end
   end
 
   scenario 'answering a question' do
     visit '/'
-    answer_newest_question
-    expect(page).to have_content 'Vraag 2'
+    answer_question 1, 'Eens'
+    expect_last_question_to_be 'Vraag 2'
+  end
+
+  scenario 'changing a previously answered question' do
+    visit '/'
+
+    answer_question 1, 'Eens'
+    expect_last_question_to_be 'Vraag 2'
+
+    answer_question 1, 'Oneens'
+    expect_last_question_to_be 'Vraag 3'
   end
 end

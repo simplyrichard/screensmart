@@ -1,8 +1,16 @@
+//colors
+$screensmart-blue: #0d8bbd
+$screensmart-green: #48d0c6
+$screensmart-yellow: #d1c809
+$screensmart-orange: #f2a50f
+
 // layout
 $layout-width: 1100px
 $application-background-color: #fcfcf8
-$application-main-color: #0d8bbd
+$application-main-color: $screensmart-blue
 $application-text-color: darken($application-main-color, 33%)
+$application-link-color: $application-main-color
+$application-link-hover-color: $screensmart-yellow
 
 $breakpoint-mobile: 500px
 $breakpoint-mobile-v: 500px
@@ -13,7 +21,7 @@ $logo-height: 50px
 
 //feed-item
 $feed-item-background-color: #fff
-$feed-item-border-color: #48d0c6
+$feed-item-border-color: $screensmart-green
 $feed-item-height: 10rem
 $feed-item-margin: 20px
 $feed-item-padding-vertical: 15px
@@ -60,3 +68,12 @@ $debug-background-color: $application-background-color
 
 // animation
 $easing: 500ms ease-in-out
+
+//messages
+$message-background-color: #fff
+$message-border-color: $screensmart-orange
+$message-height: 2em
+$message-margin: $feed-item-margin
+$message-padding-vertical: $feed-item-padding-vertical
+$message-padding-horizontal: $feed-item-padding-horizontal
+$message-text-color: darken($application-main-color, 18%)

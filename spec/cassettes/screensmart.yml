@@ -6,59 +6,17 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "{}"
-    headers:
-      Content-Type:
-      - application/json
   response:
     status:
       code: 200
       message: OK
-    headers:
-      Date:
-      - Mon, 29 Feb 2016 08:45:45 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Cache-Control:
-      - max-age=300, public
-      Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x011a115c43/
-      X-Ocpu-Session:
-      - x011a115c43
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - Location, X-ocpu-session, Content-Type, Cache-Control
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
-      Access-Control-Allow-Credentials:
-      - 'true'
-      X-Ocpu-R:
-      - R version 3.2.3 (2015-12-10)
-      X-Ocpu-Locale:
-      - en_US.UTF-8
-      X-Ocpu-Time:
-      - 2016-02-29 08:45:47 UTC
-      X-Ocpu-Version:
-      - 1.5.2
-      X-Ocpu-Server:
-      - rApache
-      Vary:
-      - Accept-Encoding
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
-      Strict-Transport-Security:
-      - max-age=31536000; includesubdomains
     body:
       encoding: UTF-8
       string: |
         [
           {
             "key": "EL02",
-            "text": "De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.",
+            "text": "Vraag 1",
             "answer_option_set_id": 2,
             "answer_options": [
               {
@@ -74,6 +32,21 @@ http_interactions:
           {
             "key": "EL03",
             "text": "Vraag 2",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "value": 0,
+                "text": "Oneens"
+              },
+              {
+                "value": 1,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "key": "EL04",
+            "text": "Vraag 3",
             "answer_option_set_id": 2,
             "answer_options": [
               {
@@ -110,52 +83,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"responses":[]}'
-    headers:
-      Content-Type:
-      - application/json
   response:
     status:
       code: 200
       message: OK
-    headers:
-      Date:
-      - Thu, 03 Mar 2016 09:29:31 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Cache-Control:
-      - max-age=300, public
-      Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
-      X-Ocpu-Session:
-      - x05ba1cbb51
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - Location, X-ocpu-session, Content-Type, Cache-Control
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
-      Access-Control-Allow-Credentials:
-      - 'true'
-      X-Ocpu-R:
-      - R version 3.2.3 (2015-12-10)
-      X-Ocpu-Locale:
-      - en_US.UTF-8
-      X-Ocpu-Time:
-      - 2016-03-03 09:29:33 UTC
-      X-Ocpu-Version:
-      - 1.5.2
-      X-Ocpu-Server:
-      - rApache
-      Vary:
-      - Accept-Encoding
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
-      Strict-Transport-Security:
-      - max-age=31536000; includesubdomains
     body:
       encoding: UTF-8
       string: |
@@ -174,52 +105,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"responses":[{"EL02":1}],"estimate":1.0,"variance":0.5}'
-    headers:
-      Content-Type:
-      - application/json
   response:
     status:
       code: 200
       message: OK
-    headers:
-      Date:
-      - Thu, 03 Mar 2016 09:29:31 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Cache-Control:
-      - max-age=300, public
-      Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
-      X-Ocpu-Session:
-      - x05ba1cbb51
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - Location, X-ocpu-session, Content-Type, Cache-Control
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
-      Access-Control-Allow-Credentials:
-      - 'true'
-      X-Ocpu-R:
-      - R version 3.2.3 (2015-12-10)
-      X-Ocpu-Locale:
-      - en_US.UTF-8
-      X-Ocpu-Time:
-      - 2016-03-03 09:29:33 UTC
-      X-Ocpu-Version:
-      - 1.5.2
-      X-Ocpu-Server:
-      - rApache
-      Vary:
-      - Accept-Encoding
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
-      Strict-Transport-Security:
-      - max-age=31536000; includesubdomains
     body:
       encoding: UTF-8
       string: |
@@ -237,53 +126,33 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"responses":[{"enough_answers_to_be_done":1}],"estimate":1.0,"variance":0.5}'
-    headers:
-      Content-Type:
-      - application/json
+      string: '{"responses":[{"EL02":0}],"estimate":1.0,"variance":0.5}'
   response:
     status:
       code: 200
       message: OK
-    headers:
-      Date:
-      - Wed, 30 Mar 2016 07:53:50 GMT
-      Server:
-      - Apache/2.4.7 (Ubuntu)
-      Cache-Control:
-      - max-age=300, public
-      Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
-      X-Ocpu-Session:
-      - x0331ac3cd7
-      Access-Control-Allow-Origin:
-      - "*"
-      Access-Control-Expose-Headers:
-      - Location, X-ocpu-session, Content-Type, Cache-Control
-      Access-Control-Allow-Headers:
-      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
-      Access-Control-Allow-Credentials:
-      - 'true'
-      X-Ocpu-R:
-      - R version 3.2.3 (2015-12-10)
-      X-Ocpu-Locale:
-      - en_US.UTF-8
-      X-Ocpu-Time:
-      - 2016-03-30 07:53:52 UTC
-      X-Ocpu-Version:
-      - 1.5.2
-      X-Ocpu-Server:
-      - rApache
-      Vary:
-      - Accept-Encoding
-      Connection:
-      - close
-      Transfer-Encoding:
-      - chunked
-      Content-Type:
-      - application/json
-      Strict-Transport-Security:
-      - max-age=31536000; includesubdomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL04",
+          "estimate": [0.7],
+          "variance": [0.6],
+          "responses": [],
+          "continue_test": true
+        }
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 09:29:33 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"responses":[{"enough_answers_to_be_done":1}],"estimate":1.0,"variance":0.5}'
+  response:
+    status:
+      code: 200
+      message: OK
     body:
       encoding: UTF-8
       string: |

@@ -3,9 +3,6 @@
 @FeedView = React.createClass
   displayName: 'FeedView'
 
-  propTypes:
-    children: React.PropTypes.array
-
   componentDidUpdate: ->
     justStarted = @props.children.length == 1
     unless justStarted
@@ -14,8 +11,8 @@
   render: ->
     div
       className: 'feed'
-      @props.children.map (child, index) ->
+      @props.children.map (child) ->
         div
-          key: index
+          key: child.key
           className: 'item'
           child

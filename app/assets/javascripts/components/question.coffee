@@ -5,10 +5,12 @@
 
   propTypes:
     question: React.PropTypes.object.isRequired
+    onAnswerChange: React.PropTypes.func.isRequired
+    editable: React.PropTypes.bool.isRequired
 
   onOptionClick: (event) ->
     question = event.target
-    @props.onChange(question.name, question.value)
+    @props.onAnswerChange(question.name, parseInt(question.value))
 
   className: ->
     className= 'question'

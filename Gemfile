@@ -41,6 +41,8 @@ group :development do
   gem 'guard-livereload',    '~> 2.4.0'
   gem 'guard-coffeelint'
   gem 'guard-bundler'
+
+  gem 'thin' # Allows usage of rails server with async requests
 end
 
 group :test do
