@@ -26,6 +26,8 @@ gem 'opencpu'
 
 gem 'dotenv-rails'
 
+gem 'puma'
+
 group :development, :test do
   gem 'byebug'
   gem 'awesome_print', '~> 1.6'
