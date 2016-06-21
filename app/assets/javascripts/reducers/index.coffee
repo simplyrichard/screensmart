@@ -4,7 +4,19 @@ merge = (objects...) ->
 deepCopy = (originalObject, into = {}) ->
   $.extend(true, into, originalObject)
 
+defaultResponse =
+  questions: []
+  loading: true
+  done: false
+
 Screensmart.reducer = Redux.combineReducers
+  domains: (domains = [], action) ->
+    switch action.type
+      when 'RECEIVE_DOMAINS'
+        action.domains
+      else
+        domains
+
   messages: (messages = [], action) ->
     switch action.type
       when 'ADD_MESSAGE'
@@ -15,18 +27,20 @@ Screensmart.reducer = Redux.combineReducers
       else
         messages
 
-  response: (response, action) ->
+  response: (response = defaultResponse, action) ->
     switch action.type
+      when 'RESET_QUESTIONS'
+        merge response,
+              questions: defaultResponse.questions
+      when 'SET_DOMAIN_IDS'
+        merge response,
+              domain_ids: action.domainIds
       when 'SET_ANSWER'
-        updatedResponse = responseWithoutNonFilledOutQuestions(
-          responseWithAnswer(
+        responseWithoutNonFilledOutQuestions \
+          responseWithAnswer \
             response,
-            action.key,
+            action.id,
             action.value
-          )
-        )
-
-        updatedResponse
 
       when 'START_RESPONSE_UPDATE'
         merge response,
@@ -38,25 +52,23 @@ Screensmart.reducer = Redux.combineReducers
               loading: false
 
       else
-        questions: []
-        loading: true
-        done: false
+        response
 
-responseWithAnswer = (response, key, value) ->
+responseWithAnswer = (response, id, value) ->
   questions = deepCopy response.questions, []
 
-  index = indexOfQuestion(questions, key)
+  index = indexOfQuestion(questions, id)
   questions[index].answer_value = value
 
   merge response,
         questions: questions
 
-indexOfQuestion = (questions, key) ->
-  questions.indexOf questionByKey(questions, key)
+indexOfQuestion = (questions, id) ->
+  questions.indexOf findQuestion(questions, id)
 
-questionByKey = (questions, key) ->
+findQuestion = (questions, id) ->
   questions.filter((question) ->
-    question.key == key
+    question.id == id
   )[0]
 
 responseWithoutNonFilledOutQuestions = (response) ->

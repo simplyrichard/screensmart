@@ -1,12 +1,30 @@
+{ createStore, compose, applyMiddleware, thunk, combineReducers } = Redux
+{ Router, browserHistory } = ReactRouter
+{ syncHistoryWithStore, routerReducer } = ReactRouterRedux
+{ createFactory } = React
+
 document.addEventListener 'DOMContentLoaded', ->
-  store = Screensmart.store = Redux.createStore \
-    Screensmart.reducer,
-    Redux.applyMiddleware(Redux.thunk)
+  reducers = combineReducers
+    app: Screensmart.reducer
+    routing: routerReducer
 
-  store.dispatch Screensmart.Actions.updateResponse()
+  middlewares = compose applyMiddleware(thunk),
+                if window.devToolsExtension then window.devToolsExtension()
+                else (f) -> f
 
-  provider = React.createFactory(ReactRedux.Provider)
+  store = Screensmart.store = createStore reducers, middlewares
+
+  history = syncHistoryWithStore(browserHistory, store)
+
+  router = createFactory(Router)
+    history: history
+    Screensmart.routes...
+
+  app = createFactory(AppContainer)
+    router: router
+
+  provider = createFactory(ReactRedux.Provider)
     store: store,
-    React.createFactory(ScreensmartApp)({})
+    app
 
   ReactDOM.render provider, document.getElementById('root')

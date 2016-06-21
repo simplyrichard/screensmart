@@ -8,7 +8,10 @@
 //= require react_ujs
 //= require redux
 //= require react-redux
+//= require ReactRouter
+//= require ReactRouterRedux
 //= require redux-thunk
 //= require initializer
 //= require components
+//= require routes
 //= require entry_point
