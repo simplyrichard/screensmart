@@ -26,4 +26,5 @@ $(document).ajaxError (event, xhr, settings, error ) ->
   { method, url } = settings
   { status } = xhr
   throw new Error "#{method} #{url} failed: #{status} #{error}. " +
-                  "#{xhr.responseText}"
+                  "#{xhr.responseText}" +
+                  "settings: #{JSON.stringify(settings, null, '\t')}"
