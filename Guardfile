@@ -57,7 +57,7 @@ guard :rubocop do
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
 
-guard :coffeelint, config_file: 'config/coffeelint.json' do
+guard :coffeelint, config_file: 'coffeelint.json' do
   watch %r{^app/assets/javascripts/.*\.coffee$}
 end
 

@@ -21,10 +21,12 @@ describe ResponseSerializer do
           id: 2,
           answer_options: [
             {
+              id: 1,
               value: 0,
               text: 'Oneens'
             },
             {
+              id: 2,
               value: 1,
               text: 'Eens'
             }
@@ -38,10 +40,12 @@ describe ResponseSerializer do
           id: 2,
           answer_options: [
             {
+              id: 1,
               value: 0,
               text: 'Oneens'
             },
             {
+              id: 2,
               value: 1,
               text: 'Eens'
             }
