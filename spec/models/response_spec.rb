@@ -19,7 +19,7 @@ describe Response do
   describe '#questions' do
     context 'when not done testing' do
       it 'contains all answered questions plus the next one' do
-        response = r(answer_values: { 'EL02' => 1 })
+        response = r(answer_values: { 'EL02' => 2 })
         expect(response.questions.map(&:id)).to eq %w( EL02 EL03 )
       end
     end
@@ -33,7 +33,7 @@ describe Response do
 
   describe '#answers' do
     it 'contains all answers to filled out questions' do
-      response = r(answer_values: { 'EL02' => 1 })
+      response = r(answer_values: { 'EL02' => 2 })
       expect(response.answers.map(&:id)).to eq %w( EL02 )
     end
   end
