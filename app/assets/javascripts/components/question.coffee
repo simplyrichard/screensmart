@@ -29,7 +29,7 @@
       ul
         className: "options answer-option-set-#{answer_option_set.id}"
         answer_option_set.answer_options.map (answer_option) =>
-          key = "question_#{questionId}_answer_#{answer_option.id}" # TODO: see other TODO below
+          key = "question_#{questionId}_answer_#{answer_option.id}"
           li
             className: 'option'
             key: key
@@ -37,8 +37,7 @@
               type: 'radio'
               name: questionId
               id: key
-              value: answer_option.id # TODO: replace with answer_option.id after R package
-                                         # is updated to use id-based answers
+              value: answer_option.id
               onClick: @onOptionClick
             label
               className: 'text'

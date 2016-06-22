@@ -1,6 +1,6 @@
 describe ResponseSerializer do
   subject do
-    response = Response.new(answer_values: { 'EL02' => 1 }, domain_ids: ['POS-PQ'])
+    response = Response.new(answer_values: { 'EL02' => 2 }, domain_ids: ['POS-PQ'])
     JSON.parse(ResponseSerializer.new(response).to_json)['response']
   end
 
@@ -16,18 +16,16 @@ describe ResponseSerializer do
       questions: [{
         id: 'EL02',
         text: 'Vraag 1',
-        answer_value: 1,
+        answer_value: 2,
         answer_option_set: {
           id: 2,
           answer_options: [
             {
               id: 1,
-              value: 0,
               text: 'Oneens'
             },
             {
               id: 2,
-              value: 1,
               text: 'Eens'
             }
           ]
@@ -41,12 +39,10 @@ describe ResponseSerializer do
           answer_options: [
             {
               id: 1,
-              value: 0,
               text: 'Oneens'
             },
             {
               id: 2,
-              value: 1,
               text: 'Eens'
             }
           ]

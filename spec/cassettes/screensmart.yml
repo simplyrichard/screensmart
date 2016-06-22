@@ -64,12 +64,10 @@ http_interactions:
             "answer_options": [
               {
                 "id": 1,
-                "value": 0,
                 "text": "Oneens"
               },
               {
                 "id": 2,
-                "value": 1,
                 "text": "Eens"
               }
             ]
@@ -85,12 +83,10 @@ http_interactions:
             "answer_options": [
               {
                 "id": 1,
-                "value": 0,
                 "text": "Oneens"
               },
               {
                 "id": 2,
-                "value": 1,
                 "text": "Eens"
               }
             ]
@@ -106,12 +102,10 @@ http_interactions:
             "answer_options": [
               {
                 "id": 1,
-                "value": 0,
                 "text": "Oneens"
               },
               {
                 "id": 2,
-                "value": 1,
                 "text": "Eens"
               }
             ]
@@ -127,12 +121,10 @@ http_interactions:
             "answer_options": [
               {
                 "id": 1,
-                "value": 0,
                 "text": "Oneens"
               },
               {
                 "id": 2,
-                "value": 1,
                 "text": "Eens"
               }
             ]
@@ -218,7 +210,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"answers":[{"EL02":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
+      string: '{"answers":[{"EL02":2}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
     headers:
       Content-Type:
       - application/json
@@ -282,7 +274,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"answers":[{"EL02":0}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
+      string: '{"answers":[{"EL02":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
     headers:
       Content-Type:
       - application/json

@@ -40,7 +40,7 @@ describe RPackage do
 
     context 'with answers and domains' do
       it 'returns a new next_question, estimate and variance' do
-        expect(described_module.data_for({ 'EL02' => 1 }, domains)).to eq \
+        expect(described_module.data_for({ 'EL02' => 2 }, domains)).to eq \
           next_question_id: 'EL03',
           estimate: 0.7,
           variance: 0.6,
@@ -64,7 +64,7 @@ describe RPackage do
 
       def second_call
         described_module.call 'call_shadowcat',
-                              answers: [{ 'EL02' => 1 }],
+                              answers: [{ 'EL02' => 2 }],
                               estimate: 1.0,
                               variance: 0.5,
                               domain: ['POS-PQ']

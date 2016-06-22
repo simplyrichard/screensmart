@@ -13,7 +13,7 @@ describe ResponsesController do
     end
 
     context 'with answers and a domain' do
-      let(:response_params) { { questions: [{ 'id' => 'EL02', 'answer_value' => 1 }], domain_ids: ['POS-PQ'] } }
+      let(:response_params) { { questions: [{ 'id' => 'EL02', 'answer_value' => 2 }], domain_ids: ['POS-PQ'] } }
 
       it 'includes the next question' do
         expect(assigns(:response).next_question.id).to eq 'EL03'
