@@ -219,6 +219,9 @@ GEM
       yajl-ruby (~> 1.2, >= 1.2.0)
     parser (2.3.0.6)
       ast (~> 2.2)
+    passenger (5.0.29)
+      rack
+      rake (>= 0.8.1)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -229,7 +232,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (3.4.0)
     rack (1.6.4)
     rack-haproxy_status (0.8.1)
     rack-test (0.6.3)
@@ -389,8 +391,8 @@ DEPENDENCIES
   jquery-rails
   neat (~> 1.7.3)
   opencpu
+  passenger
   poltergeist (~> 1.9.0)
-  puma
   rack-haproxy_status (~> 0.8.1)
   rails (= 4.2.6)
   react-rails (~> 1.7.1)

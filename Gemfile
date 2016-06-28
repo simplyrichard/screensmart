@@ -26,7 +26,7 @@ gem 'opencpu'
 
 gem 'dotenv-rails'
 
-gem 'puma'
+gem 'passenger'
 
 group :development, :test do
   gem 'byebug'
