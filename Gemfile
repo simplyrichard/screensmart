@@ -45,6 +45,11 @@ group :development do
   gem 'guard-bundler'
 
   gem 'thin' # Allows usage of rails server with async requests
+
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails-console'
 end
 
 group :test do
