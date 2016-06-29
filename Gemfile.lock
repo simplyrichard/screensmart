@@ -390,6 +390,7 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jquery-rails
   neat (~> 1.7.3)
+  nokogiri (~> 1.6.7.2)
   opencpu
   passenger
   poltergeist (~> 1.9.0)
