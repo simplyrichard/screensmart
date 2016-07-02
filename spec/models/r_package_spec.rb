@@ -105,5 +105,18 @@ describe RPackage do
         end
       end
     end
+
+    describe 'error handling' do
+      subject { RPackage.call 'some_function' }
+
+      context 'Access denied' do
+        it 'shows instructions on how to configure the gem' do
+          allow_any_instance_of(OpenCPU::Client).to receive(:execute) { raise OpenCPU::Errors::AccessDenied }
+
+          expect { subject }.to raise_error RuntimeError, 'OpenCPU authentication failed. Ensure' \
+            'OPENCPU_ENDPOINT_URL, OPENCPU_USERNAME and OPENCPU_PASSWORD environment variables are set correctly.'
+        end
+      end
+    end
   end
 end
