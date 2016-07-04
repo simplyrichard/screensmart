@@ -30,13 +30,14 @@ bin/app-deploy screensmart production
 ## When a new screensmart-r version is released
 When a new screensmart-r version is released which changes the API / schema,
 screensmart needs to be adapted to match this schema.
-[https://github.com/roqua/screensmart/blob/master/spec/support/mock_all_calls_to_r.rb#L1](`spec/support/mock_all_calls_to_r.rb` contains instructions and helpers to do this)
+[`spec/support/mock_all_calls_to_r.rb` contains instructions and helpers to do this](https://github.com/roqua/screensmart/blob/master/spec/support/mock_all_calls_to_r.rb#L1)
 
-## Architecture
+# Architecture
+## Roles of services
 ```
                                +---------+       +--------+
-- Storage backend              |         |       |        |
-- Has no knowledge of schema   |  RoQua  |       |  Core  | - Proxy for invitation e-mails
+- storage backend              |         |       |        |
+- has no knowledge of schema   |  RoQua  |       |  Core  | - proxy for invitation e-mails
                                |         |       |        |
                                +----^----+       +----^---+
                                     |                 |
@@ -49,8 +50,8 @@ screensmart needs to be adapted to match this schema.
                                     |                 |
                                     |                 |
                                    +---------------------+          +-----------+
-- Authorizes browser requests      |                     <----------+           |  - User Interface
-- Makes authenticated API requests |      screensmart    |          |  Browser  |  -
+- authorizes browser requests      |                     <----------+           |  - user interface
+- makes authenticated API requests |      screensmart    |          |  Browser  |
                                    |                     +---------->           |
                                    +-------------^-------+          +-----------+
                                           |      |
@@ -70,3 +71,16 @@ screensmart needs to be adapted to match this schema.
                                  | +---------------------+  |
                                  +--------------------------+
 ```
+
+## Model
+Screensmart has the requirement that researchers are able to determine how long someone took to think of an answer,
+and see all the steps someone took to finish their response.
+
+Because of this, Screensmart uses [Event Sourcing](http://docs.geteventstore.com/introduction/event-sourcing-basics/)
+to model responses. Every response has a unique UUID, which can have various events happen to it:
+- `invite_sent`: a doctor requested that someone makes a response for a given domain and an e-mail is sent
+- `response_started`: the respondent opened the invitation link in the e-mail
+- `answer_set`: the respondent set (created or changed) their answer to a given question
+
+## Client code
+The browser code is based on the [Redux](https://facebook.github.io/react/) state container and [React](https://facebook.github.io/react/) for view components.
