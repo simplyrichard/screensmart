@@ -80,8 +80,8 @@ module RPackage
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
-    result = OpenCPU.client.execute 'screensmart', function,
-                                    user: :system, data: parameters, convert_na_to_nil: true
+    result = Client.instance.execute 'screensmart', function,
+                                     user: :system, data: parameters, convert_na_to_nil: true
     Rails.logger.debug "Result: #{result}"
     result
   end
