@@ -3,10 +3,10 @@
     $('body').animate scrollTop: @positionInPage() - @marginTop(), 700
 
   positionInPage: ->
-    @jQueryElement().offset().top
+    parseFloat @jQueryElement().offset().top
 
   marginTop: ->
-    @jQueryElement().css('margin-top').replace('px', '')
+    parseFloat @jQueryElement().css('margin-top').replace('px', '')
 
   jQueryElement: ->
     $(ReactDOM.findDOMNode(this))
