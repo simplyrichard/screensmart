@@ -35,33 +35,33 @@ screensmart needs to be adapted to match this schema.
 # Architecture
 ## Roles of services
 ```
-                               +---------+       +--------+
-- storage backend              |         |       |        |
-- has no knowledge of schema   |  RoQua  |       |  Core  | - proxy for invitation e-mails
-                               |         |       |        |
-                               +----^----+       +----^---+
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
-                                    |                 |
+                               +--------------+       +-----------+
+                               |              |       |           |
+       - Stores events as JSON |  PostgreSQL  |       |  Mailgun  | - Service for invitation e-mails
+                               |              |       |           |
+                               +--------------+       +-----------+
+                                      ^                 ^
+                                      |                 |
+                                      |                 |
+                                      |                 |
+                                      |                 |
+                                      |                 |
+                                      |                 |
+                                      |                 |
+                                      |                 |
                                    +---------------------+          +-----------+
-- authorizes browser requests      |                     <----------+           |  - user interface
+- authorizes browser requests      |                     |<---------+           |  - user interface
 - makes authenticated API requests |      screensmart    |          |  Browser  |
-                                   |                     +---------->           |
-                                   +-------------^-------+          +-----------+
+                                   |                     +--------->|           |
+                                   +---------------------+          +-----------+
+                                          |      ^
                                           |      |
                                           |      |
                                           |      |
                                           |      |
                                           |      |
-                                          |      |
-                                          |      |
-                                 +--------v-----------------+
+                                          v      |
+                                 +--------------------------+
                                  |         OpenCPU          |
                                  |                          |
                                  | +---------------------+  | - determines next question based on answer
