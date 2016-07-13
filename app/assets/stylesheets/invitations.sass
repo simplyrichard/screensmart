@@ -1,0 +1,76 @@
+.invitation-form
+  background-color: $form-background-color
+  border: 3px solid $form-border-color
+  border-radius: $form-border-radius
+  padding: $form-padding
+  margin: $form-margin
+  input[type="text"]
+    width: 100%
+    padding: 10px
+    margin: 0 0 10px
+    border-radius: 5px
+    font-size: $screensmart-font-size
+  .small
+    font-size: 0.8rem
+    color: $past-option-color
+    margin-top: -8px
+    margin-bottom: $screensmart-font-size
+    padding-left: $form-text-padding
+    display: block
+  .domain-wrapper
+    margin-bottom: $screensmart-font-size
+    padding-top: 0.3rem
+    padding-left: $form-text-padding
+    ul.domains
+      list-style-type: none
+      li
+        input[type="radio"]
+          margin-right: 1rem
+  button[type="submit"]
+    border-radius: 5px
+    padding: 5px 15px
+    font-size: 1.2rem
+    background-color: $form-submit-background-color
+    color: $form-submit-color
+    border: 2px solid $form-submit-border-color
+    margin-right: 1.2rem
+    margin-bottom: 10px
+    &:hover
+      background-color: $form-submit-background-color-hover
+      border: 2px solid $form-submit-border-color-hover
+      cursor: pointer
+
+  .invalid
+    border: 2px solid $screensmart-red
+    border-radius: 5px
+  .error
+    font-size: 1rem
+    font-style: italic
+    color: darken($screensmart-red, 23%)
+    &:before
+      @extend .fa
+      @extend .fa-exclamation-circle:before
+      padding-right: 10px
+
+  .sent-form-info
+    display: inline-block
+    div
+      padding: 5px 15px
+      border-radius: 5px
+      i
+        padding-right: 10px
+    .warning
+      border: 2px solid $screensmart-orange
+      background-color: lighten($screensmart-orange, 45%)
+      i
+        color: lighten($screensmart-orange, 10%)
+    .submitting
+      border: 2px solid $screensmart-yellow
+      background-color: lighten($screensmart-yellow, 49%)
+      i
+        color: lighten($screensmart-yellow, 3%)
+    .sent
+      border: 2px solid $screensmart-green
+      background-color: lighten($screensmart-green, 41%)
+      i
+        color: $screensmart-blue

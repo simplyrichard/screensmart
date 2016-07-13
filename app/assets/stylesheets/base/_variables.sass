@@ -3,6 +3,7 @@ $screensmart-blue: #0d8bbd
 $screensmart-green: #48d0c6
 $screensmart-yellow: #d1c809
 $screensmart-orange: #f2a50f
+$screensmart-red: #f4664c
 
 // layout
 $layout-width: 1100px
@@ -11,9 +12,15 @@ $application-main-color: $screensmart-blue
 $application-text-color: darken($application-main-color, 33%)
 $application-link-color: $application-main-color
 $application-link-hover-color: $screensmart-yellow
+$application-card-background-color: #fff
+$application-card-border-color: $screensmart-green
+$application-card-border-radius: 4px
 
 $breakpoint-mobile: 500px
 $breakpoint-mobile-v: 500px
+
+// typography
+$screensmart-font-size: 1.2rem
 
 // header
 $header-height: 70px
@@ -23,9 +30,9 @@ $logo-width: 200px
 $logo-height: 50px
 
 //feed-item
-$feed-item-background-color: #fff
-$feed-item-border-color: $screensmart-green
-$feed-item-border-radius: 4px
+$feed-item-background-color: $application-card-background-color
+$feed-item-border-color: $application-card-border-color
+$feed-item-border-radius: $application-card-border-radius
 $feed-item-height: 10rem
 $feed-item-margin: 20px
 $feed-item-padding-vertical: 15px
@@ -81,3 +88,17 @@ $message-margin: $feed-item-margin
 $message-padding-vertical: $feed-item-padding-vertical
 $message-padding-horizontal: $feed-item-padding-horizontal
 $message-text-color: darken($application-main-color, 18%)
+
+// (invitation)form
+$form-margin: $feed-item-margin
+$form-padding: 35px
+$form-text-padding: 11px
+$form-background-color: $application-card-background-color
+$form-border-color: $application-card-border-color
+$form-border-radius: $application-card-border-radius
+$form-submit-background-color: $option-background-color-hover
+$form-submit-color: $option-color-hover
+$form-submit-border-color: $option-background-color-hover
+$form-submit-background-color-hover: darken($form-submit-background-color, 5%)
+$form-submit-border-color-hover: $form-submit-background-color-hover
+

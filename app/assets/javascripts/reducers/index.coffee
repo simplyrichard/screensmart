@@ -1,15 +1,22 @@
-merge = (objects...) ->
-  $.extend {}, objects...
-
-deepCopy = (originalObject, into = {}) ->
-  $.extend(true, into, originalObject)
+{ routerReducer } = ReactRouterRedux
 
 defaultResponse =
   questions: []
   loading: true
   done: false
 
-Screensmart.reducer = Redux.combineReducers
+Screensmart.reducers = Redux.combineReducers
+  routing: routerReducer
+  form: ReduxForm.reducer
+
+  invitation: (invitation = { sent: false }, action) ->
+    switch action.type
+      when 'INVITATION_SENT'
+        merge invitation,
+              sent: true
+      else
+        invitation
+
   domains: (domains = [], action) ->
     switch action.type
       when 'RECEIVE_DOMAINS'

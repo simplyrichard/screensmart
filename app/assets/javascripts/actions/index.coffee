@@ -8,6 +8,14 @@ Screensmart.Actions =
     type: 'RECEIVE_DOMAINS'
     domains: data.domains
 
+  sendInvitation: (enteredValues) ->
+    (dispatch) =>
+      $.postJSON('/invitations', enteredValues).then =>
+        dispatch @finishInvitationSend()
+
+  finishInvitationSend: ->
+    type: 'INVITATION_SENT'
+
   addMessage: (message) ->
     type: 'ADD_MESSAGE'
     message: message
@@ -24,9 +32,9 @@ Screensmart.Actions =
 
   updateResponse: ->
     (dispatch, getState) =>
-      response = getState().app.response
+      response = getState().response
       dispatch @startResponseUpdate()
-      syncResponse(response).then (data) =>
+      $.postJSON('/responses', response).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
   setDomainIds: (domainIds) ->
@@ -48,9 +56,3 @@ Screensmart.Actions =
   receiveResponseUpdate: (data) ->
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
-
-syncResponse = (response) ->
-  $.ajax '/responses',
-    method: 'POST'
-    data: JSON.stringify
-      response: response
