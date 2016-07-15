@@ -5,5 +5,5 @@
 
   render: ->
     div
-      className: 'feed'
+      className: "feed #{'done' if @props.done}"
       @props.children
