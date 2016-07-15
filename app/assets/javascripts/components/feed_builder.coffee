@@ -8,13 +8,14 @@ class @FeedBuilder
     { questions, loading, done } = @response
     elements = []
 
-    for question in questions
-      elements.push React.createElement Question,
-        question: question
-        key: elements.length
-        editable: !done
-        onChange: @onAnswerChange
-        onAnswerChange: @onAnswerChange
+    unless done
+      for question in questions
+        elements.push React.createElement Question,
+          question: question
+          key: elements.length
+          editable: !done
+          onChange: @onAnswerChange
+          onAnswerChange: @onAnswerChange
 
     if loading
       elements.push React.createElement LoadingIndicator,
