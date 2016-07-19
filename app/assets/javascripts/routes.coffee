@@ -1,23 +1,22 @@
 { createFactory } = React
 { Route } = ReactRouter
 
-setDomainsBasedOnQuery = (nextState) ->
-  domainIds = nextState.location.query.domainIds?.split?(',')
-  if domainIds
-    Screensmart.store.dispatch Screensmart.Actions.setDomainIds domainIds
+setResponseUUIDBasedOnQuery = (query) ->
+  responseUUID = query.responseUUID
+  if responseUUID
+    Screensmart.store.dispatch Screensmart.Actions.setResponseUUID responseUUID
   else
-    throw new Error 'No domainIds provided in query'
+    throw new Error 'No responseUUID provided in query'
 
 Screensmart.routes =
   [
     createFactory(Route)
-      path: '/'
-      component: createFactory(DomainSelectorContainer)
-    createFactory(Route)
-      path: '/fill_out'
+      path: '/fillOut'
       component: createFactory(FeedContainer)
-      onEnter: setDomainsBasedOnQuery
+      onEnter: (nextState) ->
+        query = nextState.location.query
+        setResponseUUIDBasedOnQuery(query)
     createFactory(Route)
-      path: '/invitations/new'
+      path: '/'
       component: createFactory(InvitationFormContainer)
   ]

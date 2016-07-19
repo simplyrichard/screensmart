@@ -3,9 +3,6 @@
   "scripts": {
   },
   "env": {
-    "LANG": {
-      "required": true
-    },
     "OPENCPU_PASSWORD": {
       "required": true
     },
@@ -19,6 +16,12 @@
       "required": true
     },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "APPSIGNAL_PUSH_API_KEY": {
+      "required": true
+    },
+    "DATABASE_URL": {
       "required": true
     }
   },
