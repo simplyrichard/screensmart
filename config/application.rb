@@ -1,4 +1,5 @@
-if app_name = ENV['HEROKU_APP_NAME'] && app_name.include?('-pr-')
+app_name = ENV['HEROKU_APP_NAME']
+if app_name && app_name.include?('-pr-')
   ENV['APPSIGNAL_APP_ENV'] = app_name.gsub(/screensmart-pr-?/, '')
 end
 
