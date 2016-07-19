@@ -1,12 +1,12 @@
 describe 'answering questions' do
   def answer_question(index, answer)
-    within ".item:nth-child(#{index}) .question" do
+    within ".question:nth-child(#{index})" do
       find('.option', text: answer).click
     end
   end
 
   def expect_last_question_to_be(text, intro_text = nil)
-    within '.item:last-child' do
+    within '.question:last-child' do
       expect(page).to have_content text
       expect(page).to have_content intro_text if intro_text
     end
