@@ -20,7 +20,7 @@ describe SendInvitation do
     end
 
     it 'sets a uuid' do
-      expect(subject.response_uuid).to be
+      expect(subject.invitation_uuid).to be
     end
 
     it 'sends the invitation' do
@@ -28,7 +28,7 @@ describe SendInvitation do
 
       expect(InvitationMailer).to receive(:invitation_email).with requester_email: params[:requester_email],
                                                                   respondent_email: params[:respondent_email],
-                                                                  response_uuid: SecureRandom.uuid
+                                                                  invitation_uuid: SecureRandom.uuid
 
       subject
     end

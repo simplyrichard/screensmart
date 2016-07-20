@@ -1,12 +1,12 @@
 { createFactory } = React
 { Route } = ReactRouter
 
-setResponseUUIDBasedOnQuery = (query) ->
-  responseUUID = query.responseUUID
-  if responseUUID
-    Screensmart.store.dispatch Screensmart.Actions.setResponseUUID responseUUID
+setInvitationUUIDBasedOnQuery = (query) ->
+  invitationUUID = query.invitationUUID
+  if invitationUUID
+    Screensmart.store.dispatch Screensmart.Actions.setInvitationUUID invitationUUID
   else
-    throw new Error 'No responseUUID provided in query'
+    throw new Error 'No invitationUUID provided in query'
 
 Screensmart.routes =
   [
@@ -15,7 +15,7 @@ Screensmart.routes =
       component: createFactory(FeedContainer)
       onEnter: (nextState) ->
         query = nextState.location.query
-        setResponseUUIDBasedOnQuery(query)
+        setInvitationUUIDBasedOnQuery(query)
     createFactory(Route)
       path: '/'
       component: createFactory(InvitationFormContainer)
