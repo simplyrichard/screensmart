@@ -7,4 +7,7 @@ class InvitationsController < ApplicationController
       head :bad_request
     end
   end
+
+  def accept
+  end
 end

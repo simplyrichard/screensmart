@@ -2,9 +2,9 @@ describe ResponsesController do
   let(:model) { Response.find('c8d56681-03be-495e-a78d-472c84098e75') }
 
   before do
-    Events::InvitationSent.create! response_uuid: model.uuid,
-                                   requester_email: 'some@doctor.dev',
-                                   domain_ids: ['POS-PQ']
+    SendInvitation.run! response_uuid: model.uuid,
+                        requester_email: 'some@doctor.dev',
+                        domain_ids: ['POS-PQ']
   end
 
   describe '#show' do

@@ -40,7 +40,7 @@ describe SendInvitation do
     context 'requester_email is invalid' do
       it 'has an error on requester email' do
         params[:requester_email] = 'requester'
-        expect(subject).to have(2).errors_on(:requester_email)
+        expect(subject).to have(1).errors_on(:requester_email)
       end
     end
 

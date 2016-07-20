@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   root to: 'app#index'
 
   scope defaults: { format: 'json' }, constraints: { format: 'json' } do
-    resources :responses, only: [:show]
+    resources :responses, only: [:create]
     # get 'responses', controller: 'responses', action: 'show', as: 'response'
     resources :answers, only: [:create]
     resources :domains, only: [:index]
-    resources :invitations, only: [:create]
+    resources :invitations, only: [:create] do
+      member { post :accept }
+    end
   end
 
   get '/fillOut' => 'app#index', as: 'fill_out'

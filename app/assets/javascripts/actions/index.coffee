@@ -30,10 +30,10 @@ Screensmart.Actions =
     id: id
     value: value
 
-  fetchInitialResponse: (uuid) ->
+  createResponse: (invitationUUID) ->
     (dispatch) =>
       dispatch @startResponseUpdate()
-      $.getJSON("/responses/#{uuid}").then (data) =>
+      $.postJSON("/responses", {invitationUUID}).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
   postAnswer: (questionId, answerValue) ->
