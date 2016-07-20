@@ -21,4 +21,15 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['MAILGUN_APIKEY'],
+    domain: ENV['MAILGUN_DOMAIN']
+  }
+
+  heroku_app_path = "https://#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME']
+  config.action_mailer.default_url_options = { host: ENV['SCREENSMART_URL'] ||
+                                                     heroku_app_path ||
+                                                     'https://screensmart.herokuapp.com' }
 end
