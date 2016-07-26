@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     # get 'responses', controller: 'responses', action: 'show', as: 'response'
     resources :answers, only: [:create]
     resources :domains, only: [:index]
-    resources :invitations, only: [:create] do
-      member { post :accept }
-    end
+    resources :invitations, only: [:create]
   end
 
   get '/fillOut' => 'app#index', as: 'fill_out'

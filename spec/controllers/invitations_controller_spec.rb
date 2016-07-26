@@ -32,21 +32,4 @@ describe InvitationsController do
       end
     end
   end
-
-  describe '#accept' do
-    let(:invitation_sent) do
-      SendInvitation.run! respondent_email: 'some@respondent.dev',
-                          requester_email: 'some@doctor.dev',
-                          domain_ids: ['POS-PQ']
-    end
-
-    subject { post :accept, invitation_uuid: invitation_sent.invitation_uuid }
-
-    it 'calls AcceptInvitation' do
-      expect(AcceptInvitation).to receive(:run!).with(invitation_uuid: invitation_sent.invitation_uuid)
-      subject
-    end
-
-    it 'redirects to the newly created response\'s ID'
-  end
 end
