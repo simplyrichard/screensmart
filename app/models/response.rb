@@ -19,7 +19,7 @@ class Response < BaseModel
   end
 
   def domain_ids
-    Events::InvitationSent.find_by!(response_uuid: uuid).domain_ids
+    invitation.domain_ids
   end
 
   def questions
@@ -44,7 +44,17 @@ class Response < BaseModel
     Question.new id: next_question_id unless done
   end
 
+  def invitation
+    Invitation.find_by_response_uuid uuid
+  end
+
+  def events
+    Events::Event.where response_uuid: uuid
+  end
+
   def self.find(uuid)
-    new uuid: uuid
+    new(uuid: uuid).tap do |response|
+      raise "No events for response with UUID #{response.uuid}" unless response.events.any?
+    end
   end
 end

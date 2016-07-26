@@ -15,7 +15,7 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_response_uuid_is_found
-    return if Events::InvitationSent.find_by(response_uuid: response_uuid)
+    return if Response.find response_uuid
     errors.add(:response_uuid, 'is unknown')
   end
 
