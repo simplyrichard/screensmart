@@ -10,7 +10,7 @@ describe AcceptInvitation do
 
     let(:params) { { invitation_uuid: invitation_sent.invitation_uuid } }
     it 'creates an InvitationAccepted event' do
-      expect { subject }.to change { Events::InvitationAccepted.count }.from(0).to(1)
+      expect { subject }.to change { Events::InvitationAccepted.count }.by(1)
     end
   end
 
