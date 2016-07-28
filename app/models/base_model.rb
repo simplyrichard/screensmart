@@ -17,7 +17,11 @@ class BaseModel
   # Finder method that ensures there are events for the given UUID
   def self.find(uuid)
     new(uuid: uuid).tap do |model|
-      raise "No events for #{model.class} UUID #{model.uuid}" unless model.events.any?
+      raise "No events for #{model.class} with UUID #{model.uuid}" unless model.events.any?
     end
+  end
+
+  def self.exist?(uuid)
+    new(uuid: uuid).events.any?
   end
 end

@@ -1,5 +1,5 @@
 module Events
   class InvitationAccepted < Event
-    event_attributes response_uuid: :string
+    # No event attributes, invitation_uuid + response_uuid columns are enough
   end
 end

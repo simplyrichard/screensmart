@@ -8,11 +8,6 @@ module Events
     end
 
     describe 'validation of attribute:' do
-      context 'when data is not present' do
-        before { subject.data = nil }
-        it { is_expected.not_to be_valid }
-      end
-
       context 'when response_uuid and data are present and valid' do
         it { is_expected.to be_valid }
       end

@@ -15,7 +15,7 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_response_uuid_is_found
-    return if Response.find response_uuid
+    return if Response.exist? response_uuid
     errors.add(:response_uuid, 'is unknown')
   end
 

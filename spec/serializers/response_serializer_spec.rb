@@ -1,11 +1,16 @@
 describe ResponseSerializer do
   let(:invitation_sent) do
-    Events::InvitationSent.create! response_uuid: SecureRandom.uuid,
-                                   requester_email: 'some@doctor.dev',
-                                   domain_ids: ['POS-PQ']
+    SendInvitation.run! requester_email: 'some@doctor.dev',
+                        respondent_email: 'some@patient.dev',
+                        domain_ids: ['POS-PQ']
   end
+
+  let(:invitation_accepted) do
+    AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
+  end
+
   subject do
-    response = Response.find(invitation_sent.response_uuid)
+    response = Response.find(invitation_accepted.response_uuid)
     Events::AnswerSet.create! response_uuid: response.uuid,
                               question_id: 'EL02',
                               answer_value: 2
@@ -19,7 +24,7 @@ describe ResponseSerializer do
 
   it 'includes estimate, variance and questions' do
     expect(pretty(subject)).to eq(pretty({
-      uuid: invitation_sent.response_uuid,
+      uuid: invitation_accepted.response_uuid,
       estimate: 0.7,
       variance: 0.6,
       done: false,
