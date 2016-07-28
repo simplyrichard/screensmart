@@ -1,7 +1,6 @@
 module Events
   class InvitationSent < Event
     event_attributes requester_email: :string,
-                     domain_ids: :string_array,
-                     invitation_uuid: :string
+                     domain_ids: :string_array
   end
 end

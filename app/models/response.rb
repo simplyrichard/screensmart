@@ -51,10 +51,4 @@ class Response < BaseModel
   def events
     Events::Event.where response_uuid: uuid
   end
-
-  def self.find(uuid)
-    new(uuid: uuid).tap do |response|
-      raise "No events for response with UUID #{response.uuid}" unless response.events.any?
-    end
-  end
 end

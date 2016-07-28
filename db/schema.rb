@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712143827) do
+ActiveRecord::Schema.define(version: 20160728121318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160712143827) do
     t.uuid     "response_uuid"
     t.text     "type"
     t.jsonb    "data"
+    t.uuid     "invitation_uuid"
   end
 
 end

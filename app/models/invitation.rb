@@ -14,7 +14,7 @@ class Invitation < BaseModel
     find invitation_accepted.invitation_uuid
   end
 
-  def self.find(uuid)
-    new uuid: uuid
+  def events
+    Events::Event.where invitation_uuid: uuid
   end
 end

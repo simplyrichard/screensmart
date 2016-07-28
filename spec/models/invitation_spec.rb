@@ -23,4 +23,16 @@ describe Invitation do
       expect(subject.uuid).to eq invitation_accepted.invitation_uuid
     end
   end
+
+  describe '#events' do
+    let(:event) do
+      Events::InvitationSent.create! invitation_uuid: SecureRandom.uuid,
+                                     requester_email: 'requester@example.dev',
+                                     domain_ids: ['POS-PQ']
+    end
+
+    subject { described_class.find(event.invitation_uuid).events }
+
+    it { is_expected.to eq [event] }
+  end
 end
