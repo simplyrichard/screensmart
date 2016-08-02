@@ -21,7 +21,7 @@ class BaseModel
     end
   end
 
-  def self.exist?(uuid)
+  def self.exists?(uuid)
     new(uuid: uuid).events.any?
   end
 end
