@@ -1,16 +1,28 @@
 describe ResponsesController do
-  let(:model) { Response.find('c8d56681-03be-495e-a78d-472c84098e75') }
+  let!(:invitation_sent) do
+    SendInvitation.run! requester_email: 'some@doctor.dev',
+                        respondent_email: 'some@patient.dev',
+                        domain_ids: ['POS-PQ']
+  end
 
-  before do
-    Events::InvitationSent.create! response_uuid: model.uuid,
-                                   requester_email: 'some@doctor.dev',
-                                   domain_ids: ['POS-PQ']
+  describe '#create' do
+    subject { post :create, invitation_uuid: invitation_sent.invitation_uuid }
+
+    it 'accepts the invitation' do
+      expect { subject }.to change { Events::InvitationAccepted.count }.by 1
+    end
   end
 
   describe '#show' do
-    it 'renders the entire model as JSON' do
-      get :show, id: model.uuid
+    let!(:invitation_accepted) do
+      AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
+    end
 
+    subject { get :show, id: invitation_accepted.response_uuid }
+
+    it 'renders the response as JSON' do
+      subject
+      model = Response.find invitation_accepted.response_uuid
       expect(response.body).to eq ResponseSerializer.new(model).as_json.to_json
     end
   end

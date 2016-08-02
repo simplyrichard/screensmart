@@ -13,4 +13,15 @@ class BaseModel
                                   "Errors: #{errors.full_messages}"
     end
   end
+
+  # Finder method that ensures there are events for the given UUID
+  def self.find(uuid)
+    new(uuid: uuid).tap do |model|
+      raise "No events for #{model.class} with UUID #{model.uuid}" unless model.events.any?
+    end
+  end
+
+  def self.exists?(uuid)
+    new(uuid: uuid).events.any?
+  end
 end

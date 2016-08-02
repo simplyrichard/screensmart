@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'app#index'
 
   scope defaults: { format: 'json' }, constraints: { format: 'json' } do
-    resources :responses, only: [:show]
+    resources :responses, only: [:create, :show]
     # get 'responses', controller: 'responses', action: 'show', as: 'response'
     resources :answers, only: [:create]
     resources :domains, only: [:index]

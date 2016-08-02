@@ -1,20 +1,16 @@
 describe Response do
-  def r(uuid)
-    Response.find uuid
+  let(:response) do
+    invitation_sent = SendInvitation.run! requester_email: 'some@doctor.dev',
+                                          respondent_email: 'some@patient.dev',
+                                          domain_ids: ['POS-PQ']
+    invitation_accepted = AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
+    Response.find invitation_accepted.response_uuid
   end
 
-  let(:invitation_sent) do
-    Events::InvitationSent.create!(response_uuid: SecureRandom.uuid,
-                                   requester_email: 'some@doctor.dev',
-                                   domain_ids: ['POS-PQ'])
-  end
-
-  let(:response)      { r(invitation_sent.response_uuid) }
-  let(:done_response) do
-    Events::AnswerSet.create!(response_uuid: response.uuid,
+  def complete_response
+    Events::AnswerSet.create! response_uuid: response.uuid,
                               question_id: 'enough_answers_to_be_done',
-                              answer_value: 1)
-    r(invitation_sent.response_uuid)
+                              answer_value: 1
   end
 
   describe '#next_question' do
@@ -23,7 +19,8 @@ describe Response do
     end
 
     it 'is nil when done' do
-      expect(done_response.next_question).to be nil
+      complete_response
+      expect(response.next_question).to be nil
     end
   end
 
@@ -39,7 +36,8 @@ describe Response do
 
     context 'when done testing' do
       it 'contains all answered questions' do
-        expect(done_response.questions.map(&:id)).to eq %w( enough_answers_to_be_done )
+        complete_response
+        expect(response.questions.map(&:id)).to eq %w( enough_answers_to_be_done )
       end
     end
   end

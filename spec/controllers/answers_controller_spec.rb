@@ -24,11 +24,5 @@ describe AnswersController do
 
       it { is_expected.to redirect_to "/responses/#{uuid}" }
     end
-
-    context 'with invalid params' do
-    end
-
-    context 'with missing params' do
-    end
   end
 end

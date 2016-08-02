@@ -7,7 +7,7 @@ describe InvitationMailer do
         {
           requester_email: 'some@doctor.dev',
           respondent_email: 'some@patient.dev',
-          response_uuid: SecureRandom.uuid
+          invitation_uuid: SecureRandom.uuid
         }
       end
 
@@ -16,7 +16,7 @@ describe InvitationMailer do
       end
 
       it 'contains a link to fill out the questionnaire' do
-        expect(subject.body.encoded).to include("http://test_host/fillOut?responseUUID=#{params[:response_uuid]}")
+        expect(subject.body.encoded).to include("http://test_host/fillOut?invitationUUID=#{params[:invitation_uuid]}")
       end
     end
   end
