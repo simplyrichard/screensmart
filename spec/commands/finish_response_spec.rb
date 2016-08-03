@@ -3,14 +3,14 @@ describe FinishResponse do
   let!(:response_uuid) { SecureRandom.uuid }
 
   before do
-    invitation_sent = Events::InvitationSent.create!(
+    Events::InvitationSent.create!(
       invitation_uuid: invitation_uuid,
       requester_email: 'requester@example.dev',
       domain_ids: ['POS-PQ']
     )
 
     Events::InvitationAccepted.create!(
-      invitation_uuid: invitation_sent.invitation_uuid,
+      invitation_uuid: invitation_uuid,
       response_uuid: response_uuid
     )
   end
@@ -38,6 +38,21 @@ describe FinishResponse do
         params[:response_uuid] = 'FOOBAR'
         expect(subject).to have(1).errors_on(:response_uuid)
       end
+    end
+  end
+
+  context 'when response is already finished' do
+    let(:params) { { response_uuid: response_uuid } }
+
+    before do
+      Events::ResponseFinished.create!(
+        invitation_uuid: invitation_uuid,
+        response_uuid: response_uuid
+      )
+    end
+
+    it 'does not create another ResponseFinished event' do
+      expect(subject).to have(1).errors_on(:response_uuid)
     end
   end
 end
