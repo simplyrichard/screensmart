@@ -62,6 +62,18 @@ Screensmart.reducers = Redux.combineReducers
               action.response,
               loading: false
 
+      when 'FINISH_RESPONSE'
+        merge responseWithDoneTrue \
+                response
+
+      when 'START_FINISH_RESPONSE'
+        merge response,
+              loading: true
+
+      when 'RECEIVE_FINISH_RESPONSE'
+        merge response,
+              loading: false
+
       else
         response
 
@@ -87,6 +99,10 @@ responseWithDoneFalse = (response) ->
         done: false # Ensure no old outcome is shown
                     # in case user changes an answer
                     # after finishing
+
+responseWithDoneTrue = (response) ->
+  merge response,
+        done: true
 
 responseWithoutNonFilledOutQuestions = (response) ->
   merge response,

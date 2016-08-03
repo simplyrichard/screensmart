@@ -1,3 +1,5 @@
+{ routerActions } = ReactRouterRedux
+
 Screensmart.Actions =
   fetchDomains: ->
     (dispatch) =>
@@ -60,3 +62,17 @@ Screensmart.Actions =
   receiveResponseUpdate: (data) ->
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
+
+  finishResponse: (responseUUID) ->
+    (dispatch) =>
+      dispatch @startFinishResponse()
+      $.putJSON("/responses/#{responseUUID}").then (data) =>
+        dispatch @receiveFinishResponse(data)
+        dispatch routerActions.push('/') #  Return to home page
+
+  startFinishResponse: ->
+    type: 'START_FINISH_RESPONSE'
+
+  receiveFinishResponse: (data) ->
+    type: 'RECEIVE_FINISH_RESPONSE'
+    response: data

@@ -1,4 +1,4 @@
-{div, i, p} = React.DOM
+{ div, i, p, a } = React.DOM
 
 @Outcome = React.createClass
   displayName: 'Outcome'
@@ -7,6 +7,10 @@
 
   propTypes: ->
     response: React.PropTypes.object.isRequired
+
+  onFinishClick: ->
+    { dispatch } = Screensmart.store
+    dispatch Screensmart.Actions.finishResponse(@props.response.uuid)
 
   render: ->
     {estimate, variance} = @props.response
@@ -19,3 +23,7 @@
       p
         clasName: ''
         "Estimate: #{estimate}, variance: #{variance}"
+      a
+        className: ''
+        onClick: @onFinishClick
+        'Klaar'

@@ -24,3 +24,10 @@ $.postJSON = (url, data, args = {}) ->
     method: 'POST'
     data: JSON.stringify data
     args...
+
+$.putJSON = (url, data, args = {}) ->
+  $.ajax
+    url: url
+    method: 'PUT'
+    data: JSON.stringify data
+    args...

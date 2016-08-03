@@ -10,7 +10,7 @@ class ResponsesController < ApplicationController
   end
 
   def update
-    response_finished = FinishResponse.run! response_uuid: params[:id]
+    response_finished = FinishResponse.run response_uuid: params[:id]
     if response_finished.valid?
       render json: { result: 'ok', message: 'Thanks!' }
     else
