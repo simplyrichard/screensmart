@@ -8,4 +8,13 @@ class ResponsesController < ApplicationController
     response = Response.find params[:id]
     render json: ResponseSerializer.new(response).as_json
   end
+
+  def update
+    response_finished = FinishResponse.run! response_uuid: params[:id]
+    if response_finished.valid?
+      render json: { result: 'ok', message: 'Thanks!' }
+    else
+      render json: { result: 'error', errors: response_finished.errors.messages }
+    end
+  end
 end
