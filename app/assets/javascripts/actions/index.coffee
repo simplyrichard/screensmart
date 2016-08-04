@@ -1,4 +1,4 @@
-{ routerActions } = ReactRouterRedux
+{ push } = ReactRouterRedux
 
 Screensmart.Actions =
   fetchDomains: ->
@@ -68,12 +68,7 @@ Screensmart.Actions =
       dispatch @startFinishResponse()
       $.putJSON("/responses/#{responseUUID}").then (data) =>
         dispatch @receiveFinishResponse(data)
-        dispatch
-          type: '@@router/LOCATION_CHANGE'
-          payload:
-            pathname: '/'
-            search: ''
-            hash: ''
+        dispatch push('/')
 
   startFinishResponse: ->
     type: 'START_FINISH_RESPONSE'
