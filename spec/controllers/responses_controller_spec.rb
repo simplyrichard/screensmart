@@ -32,6 +32,14 @@ describe ResponsesController do
       AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
     end
 
+    before do
+      Events::AnswerSet.create!(
+        response_uuid: invitation_accepted.response_uuid,
+        question_id: 'enough_answers_to_be_done',
+        answer_value: 1
+      )
+    end
+
     subject { put :update, id: invitation_accepted.response_uuid }
 
     it 'finishes the response' do

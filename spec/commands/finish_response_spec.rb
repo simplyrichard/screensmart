@@ -2,6 +2,7 @@ describe FinishResponse do
   let!(:invitation_uuid) { SecureRandom.uuid }
   let!(:response_uuid) { SecureRandom.uuid }
 
+  # Create a response with one answer (see VCR cassette) so we can finish the response
   before do
     Events::InvitationSent.create!(
       invitation_uuid: invitation_uuid,
@@ -12,6 +13,12 @@ describe FinishResponse do
     Events::InvitationAccepted.create!(
       invitation_uuid: invitation_uuid,
       response_uuid: response_uuid
+    )
+
+    Events::AnswerSet.create!(
+      response_uuid: response_uuid,
+      question_id: 'enough_answers_to_be_done',
+      answer_value: 1
     )
   end
 
@@ -25,9 +32,6 @@ describe FinishResponse do
     end
 
     it 'saves the estimate and variance' do
-      Events::AnswerSet.create! response_uuid: response_uuid,
-                                question_id: 'EL02',
-                                answer_value: 1
       expect(subject.result.estimate).to be_a(Float)
       expect(subject.result.variance).to be_a(Float)
     end
@@ -39,12 +43,12 @@ describe FinishResponse do
     context 'response_uuid is invalid' do
       it 'has an error when uuid is missing' do
         params[:response_uuid] = ''
-        expect(subject).to have(2).errors_on(:response_uuid)
+        expect(subject.errors_on(:response_uuid)).to include('is unknown')
       end
 
       it 'has an error when uuid is unkown' do
         params[:response_uuid] = 'FOOBAR'
-        expect(subject).to have(1).errors_on(:response_uuid)
+        expect(subject.errors_on(:response_uuid)).to include('is unknown')
       end
     end
   end
@@ -60,7 +64,7 @@ describe FinishResponse do
     end
 
     it 'does not create another ResponseFinished event' do
-      expect(subject).to have(1).errors_on(:response_uuid)
+      expect(subject.errors_on(:response_uuid)).to include('has already been finished')
     end
   end
 end

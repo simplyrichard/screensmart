@@ -5,7 +5,7 @@ class FinishResponse < ActiveInteraction::Base
   validate :validate_response_uuid_is_found
   validate :validate_invitation_uuid_is_found
   validate :validate_response_is_not_finished
-  validate :all_questions_answered
+  validate :validate_all_questions_answered
 
   def execute
     Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
@@ -29,8 +29,8 @@ class FinishResponse < ActiveInteraction::Base
     errors.add(:response_uuid, 'has already been finished')
   end
 
-  def all_questions_answered
-    return unless serialized_response.done
+  def validate_all_questions_answered
+    return if serialized_response.done
     errors.add(:response_uuid, 'not all questions have been answered')
   end
 
