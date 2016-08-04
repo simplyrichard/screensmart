@@ -23,6 +23,14 @@ describe FinishResponse do
     it 'creates an ReponseFinished event ' do
       expect { subject }.to change { Events::ResponseFinished.count }.by(1)
     end
+
+    it 'saves the estimate and variance' do
+      Events::AnswerSet.create! response_uuid: response_uuid,
+                                question_id: 'EL02',
+                                answer_value: 1
+      expect(subject.result.estimate).to be_a(Float)
+      expect(subject.result.variance).to be_a(Float)
+    end
   end
 
   context 'with invalid parameters' do

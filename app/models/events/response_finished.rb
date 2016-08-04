@@ -1,5 +1,6 @@
 module Events
   class ResponseFinished < Event
-    # No event attributes, invitation_uuid + response_uuid columns are enough
+    event_attributes estimate: :float,
+                     variance: :float
   end
 end
