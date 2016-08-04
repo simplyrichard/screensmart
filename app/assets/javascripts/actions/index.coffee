@@ -68,7 +68,12 @@ Screensmart.Actions =
       dispatch @startFinishResponse()
       $.putJSON("/responses/#{responseUUID}").then (data) =>
         dispatch @receiveFinishResponse(data)
-        dispatch routerActions.push('/') #  Return to home page
+        dispatch
+          type: '@@router/LOCATION_CHANGE'
+          payload:
+            pathname: '/'
+            search: ''
+            hash: ''
 
   startFinishResponse: ->
     type: 'START_FINISH_RESPONSE'
