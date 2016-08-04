@@ -57,4 +57,11 @@ describe SetAnswer do
       end
     end
   end
+
+  context 'when response has been finished' do
+    it 'has an error when trying to set an answer' do
+      Events::ResponseFinished.create!(response_uuid: response_uuid)
+      expect(subject).to have(1).errors_on(:response_uuid)
+    end
+  end
 end
