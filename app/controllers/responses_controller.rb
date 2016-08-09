@@ -12,9 +12,9 @@ class ResponsesController < ApplicationController
   def update
     response_finished = FinishResponse.run response_uuid: params[:id]
     if response_finished.valid?
-      render json: { result: 'ok', message: 'Thanks!' }
+      head :ok
     else
-      render json: { result: 'error', errors: response_finished.errors.messages }
+      head :unprocessable_entity
     end
   end
 end
