@@ -1,4 +1,5 @@
 class AcceptInvitation < ActiveInteraction::Base
+  class AlreadyFinished < StandardError; end
   string :invitation_uuid
 
   validates :invitation_uuid, presence: true
@@ -12,5 +13,6 @@ class AcceptInvitation < ActiveInteraction::Base
   def validate_response_has_not_been_finished
     return unless Events::ResponseFinished.find_by(invitation_uuid: invitation_uuid)
     errors.add(:invitation_uuid, 'has already been finished')
+    raise AlreadyFinished
   end
 end

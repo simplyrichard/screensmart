@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  rescue_from AcceptInvitation::AlreadyFinished, with: :already_finished
+
   def create
     invitation_accepted = AcceptInvitation.run! params.slice(:invitation_uuid)
     redirect_to response_url id: invitation_accepted.response_uuid
@@ -16,5 +18,11 @@ class ResponsesController < ApplicationController
     else
       head :unprocessable_entity
     end
+  end
+
+  private
+
+  def already_finished
+    head :locked
   end
 end
