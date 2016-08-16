@@ -329,7 +329,7 @@ http_interactions:
           "estimate": [0.7],
           "variance": [0.6],
           "answers": [],
-          "continue_test": true
+          "continue_test": false
         }
     http_version: 
   recorded_at: Thu, 03 Mar 2016 09:29:33 GMT
