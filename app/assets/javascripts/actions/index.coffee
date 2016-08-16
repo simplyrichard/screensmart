@@ -68,7 +68,6 @@ Screensmart.Actions =
       dispatch @startFinishResponse()
       $.putJSON("/responses/#{responseUUID}").then (data) =>
         dispatch @receiveFinishResponse(data)
-        dispatch push('/')
 
   startFinishResponse: ->
     type: 'START_FINISH_RESPONSE'

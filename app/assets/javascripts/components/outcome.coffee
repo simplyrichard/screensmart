@@ -1,4 +1,4 @@
-{ div, i, p, a } = React.DOM
+{ div, i, p, a, button, span } = React.DOM
 
 @Outcome = React.createClass
   displayName: 'Outcome'
@@ -13,17 +13,34 @@
     dispatch Screensmart.Actions.finishResponse(@props.response.uuid)
 
   render: ->
-    {estimate, variance} = @props.response
+    { estimate, variance, finished } = @props.response
 
     div
       className: 'outcome'
-      p
-        className: ''
-        'Bedankt voor het invullen.'
-      p
-        clasName: ''
-        "Estimate: #{estimate}, variance: #{variance}"
-      a
-        className: ''
-        onClick: @onFinishClick
-        'Klaar'
+      if finished
+        [
+          p
+            key: 'thanks'
+            [
+              i
+                className: 'fa fa-2x fa-check'
+                key: 'check'
+              span
+                key: 'thanks'
+                'Bedankt voor het invullen'
+            ]
+          p
+            key: 'estimate-variance'
+            "Estimate: #{estimate}, variance: #{variance}"
+        ]
+      else
+        [
+          p
+            key: 'instructions'
+            'U kunt de invulling afronden of uw antwoorden aanpassen'
+          button
+            type: 'submit'
+            key: 'button'
+            onClick: @onFinishClick
+            'Afronden'
+        ]
