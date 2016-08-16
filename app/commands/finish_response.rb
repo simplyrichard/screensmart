@@ -10,8 +10,9 @@ class FinishResponse < ActiveInteraction::Base
   def execute
     Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
                                      response_uuid: response_uuid,
-                                     estimate: serialized_response.estimate,
-                                     variance: serialized_response.variance
+                                     answer_values: response.answer_values,
+                                     estimate: response.estimate,
+                                     variance: response.variance
   end
 
   def validate_response_uuid_is_found
@@ -30,7 +31,7 @@ class FinishResponse < ActiveInteraction::Base
   end
 
   def validate_all_questions_answered
-    return if serialized_response.done
+    return if response.done
     errors.add(:response_uuid, 'not all questions have been answered')
   end
 
@@ -39,11 +40,7 @@ class FinishResponse < ActiveInteraction::Base
     Events::InvitationAccepted.find_by(response_uuid: response_uuid)
   end
 
-  def serialized_response
-    if Response.exists?(response_uuid)
-      @serialized_response ||= ResponseSerializer.new(Response.find(response_uuid))
-    else
-      OpenStruct.new(done: false) # return this when response is not found
-    end
+  def response
+    Response.find(response_uuid)
   end
 end
