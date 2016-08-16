@@ -1,5 +1,3 @@
-{ push } = ReactRouterRedux
-
 Screensmart.Actions =
   fetchDomains: ->
     (dispatch) =>

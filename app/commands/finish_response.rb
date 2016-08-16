@@ -31,7 +31,7 @@ class FinishResponse < ActiveInteraction::Base
   end
 
   def validate_all_questions_answered
-    return if response.done
+    return if !response_exists? || response.done
     errors.add(:response_uuid, 'not all questions have been answered')
   end
 
@@ -41,6 +41,10 @@ class FinishResponse < ActiveInteraction::Base
   end
 
   def response
-    Response.find(response_uuid)
+    Response.find response_uuid
+  end
+
+  def response_exists?
+    Response.exists? response_uuid
   end
 end
