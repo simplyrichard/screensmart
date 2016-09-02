@@ -10,7 +10,8 @@ describe 'Error reporting' do
 
       page.execute_script "$.ajax('/answers', { method: 'POST',
                                                   async: false
-                                                })"
+                                                })
+                           .fail(function() { throw new Error('test') } )"
     end
 
     # it 'reports the error to Appsignal' do

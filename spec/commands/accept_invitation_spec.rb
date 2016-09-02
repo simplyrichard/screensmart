@@ -29,6 +29,8 @@ describe AcceptInvitation do
       )
     end
 
-    it { is_expected.to have(1).errors_on :invitation_uuid }
+    it 'raises an exception' do
+      expect { subject }.to raise_error AcceptInvitation::AlreadyFinished
+    end
   end
 end
