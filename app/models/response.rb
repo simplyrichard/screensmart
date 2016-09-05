@@ -18,6 +18,10 @@ class Response < BaseModel
     end
   end
 
+  def show_secret
+    Digest::SHA256.hexdigest "#{uuid}#{Rails.config.some_secret}"
+  end
+
   def domain_ids
     invitation.domain_ids
   end
