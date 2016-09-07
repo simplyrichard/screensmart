@@ -33,8 +33,14 @@ Screensmart.Actions =
   createResponse: (invitationUUID) ->
     (dispatch) =>
       dispatch @startResponseUpdate()
-      $.postJSON("/responses", {invitationUUID}).then (data) =>
+      $.postJSON("/responses", {invitationUUID})
+      .then (data) =>
         dispatch @receiveResponseUpdate(data)
+      .fail (response) =>
+        if response.status == 423 # 423 Locked
+          dispatch @addMessage 'U heeft de vragenlijst al ingevuld'
+        else
+          throw new Error 'Unknown error'
 
   postAnswer: (questionId, answerValue) ->
     (dispatch, getState) =>
@@ -60,3 +66,16 @@ Screensmart.Actions =
   receiveResponseUpdate: (data) ->
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
+
+  finishResponse: (responseUUID) ->
+    (dispatch) =>
+      dispatch @startFinishResponse()
+      $.putJSON("/responses/#{responseUUID}").then (data) =>
+        dispatch @receiveFinishResponse(data)
+
+  startFinishResponse: ->
+    type: 'START_FINISH_RESPONSE'
+
+  receiveFinishResponse: (data) ->
+    type: 'RECEIVE_FINISH_RESPONSE'
+    response: data

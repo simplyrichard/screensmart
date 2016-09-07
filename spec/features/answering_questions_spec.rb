@@ -6,7 +6,7 @@ describe 'answering questions' do
   end
 
   def expect_last_question_to_be(text, intro_text = nil)
-    within '.question:last-child' do
+    within(:xpath, '(//div[@class="question"])[last()]') do
       expect(page).to have_content text
       expect(page).to have_content intro_text if intro_text
     end
@@ -33,12 +33,21 @@ describe 'answering questions' do
     expect_last_question_to_be 'Vraag 2'
   end
 
-  scenario 'changing a previously answered question' do
+  scenario 'finishing' do
+    expect_last_question_to_be 'Vraag 1'
+
+    # Question 1 = 'Eens' means there is a next question in VCR cassette
     answer_question 1, 'Eens'
     expect_last_question_to_be 'Vraag 2'
 
+    # Question 1 = 'Oneens' means done in VCR cassette
     answer_question 1, 'Oneens'
-    expect_last_question_to_be 'Vraag 3'
+    expect_last_question_to_be 'Vraag 1'
+    expect(page).to have_content 'Afronden'
+
+    click_on 'Afronden'
+
+    expect(page).to have_content 'Bedankt voor het invullen'
   end
 
   scenario 'starting over' do

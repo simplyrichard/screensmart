@@ -25,7 +25,6 @@ prettyStoreContents = ->
 $(document).ajaxError (event, xhr, settings, error ) ->
   { method, url } = settings
   { status } = xhr
-  throw new Error "#{method} #{url} failed: #{status} #{error}"
 
   if window.environment == 'development'
     console.log

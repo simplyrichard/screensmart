@@ -26,4 +26,24 @@ describe ResponsesController do
       expect(response.body).to eq ResponseSerializer.new(model).as_json.to_json
     end
   end
+
+  describe '#update' do
+    let!(:invitation_accepted) do
+      AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
+    end
+
+    before do
+      Events::AnswerSet.create!(
+        response_uuid: invitation_accepted.response_uuid,
+        question_id: 'enough_answers_to_be_done',
+        answer_value: 1
+      )
+    end
+
+    subject { put :update, id: invitation_accepted.response_uuid }
+
+    it 'finishes the response' do
+      expect { subject }.to change { Events::ResponseFinished.count }.by 1
+    end
+  end
 end
