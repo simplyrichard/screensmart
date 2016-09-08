@@ -15,10 +15,14 @@ class FinishResponse < ActiveInteraction::Base
                                        estimate: response.estimate,
                                        variance: response.variance
 
-    ResponseMailer.response_email(requester_email: invitation_sent.requester_email,
-                                  response_uuid: response_uuid).deliver_now
+    send_response_email
 
     response_finished
+  end
+
+  def send_response_email
+    ResponseMailer.response_email(requester_email: invitation_sent.requester_email,
+                                  response_uuid: response_uuid).deliver_now
   end
 
   def validate_response_uuid_is_found
