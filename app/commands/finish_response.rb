@@ -8,11 +8,17 @@ class FinishResponse < ActiveInteraction::Base
   validate :validate_all_questions_answered
 
   def execute
-    Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
-                                     response_uuid: response_uuid,
-                                     answer_values: response.answer_values,
-                                     estimate: response.estimate,
-                                     variance: response.variance
+    response_finished =
+      Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
+                                       response_uuid: response_uuid,
+                                       answer_values: response.answer_values,
+                                       estimate: response.estimate,
+                                       variance: response.variance
+
+    ResponseMailer.response_email(requester_email: invitation_sent.requester_email,
+                                  response_uuid: response_uuid).deliver_now
+
+    response_finished
   end
 
   def validate_response_uuid_is_found
@@ -38,6 +44,10 @@ class FinishResponse < ActiveInteraction::Base
   # The invitation that has been used to start the response
   def invitation
     Events::InvitationAccepted.find_by(response_uuid: response_uuid)
+  end
+
+  def invitation_sent
+    Events::InvitationSent.find_by(invitation_uuid: invitation.invitation_uuid)
   end
 
   def response

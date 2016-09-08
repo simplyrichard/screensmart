@@ -20,6 +20,8 @@ describe FinishResponse do
       question_id: 'enough_answers_to_be_done',
       answer_value: 1
     )
+
+    allow(ResponseMailer).to receive_message_chain(:response_email, :deliver_now)
   end
 
   subject { described_class.run(params) }
@@ -34,6 +36,12 @@ describe FinishResponse do
     it 'saves the estimate and variance' do
       expect(subject.result.estimate).to be_a(Float)
       expect(subject.result.variance).to be_a(Float)
+    end
+
+    it 'sends an email to the requester' do
+      expect(ResponseMailer).to receive(:response_email).with response_uuid: params[:response_uuid],
+                                                              requester_email: 'requester@example.dev'
+      subject
     end
   end
 
