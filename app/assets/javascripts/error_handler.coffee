@@ -26,7 +26,7 @@ $(document).ajaxError (event, xhr, settings, error ) ->
   { method, url, type } = settings
   { status } = xhr
 
-  if window.environment == 'development'
+  if window.environment == 'development' || window.environment == 'test'
     console.log "#{type} #{url} failed: #{error}"
     console.log
       responseText: xhr.responseText
