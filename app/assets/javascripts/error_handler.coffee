@@ -23,10 +23,13 @@ prettyStoreContents = ->
 
 # Global jQuery AJAX error handler
 $(document).ajaxError (event, xhr, settings, error ) ->
-  { method, url } = settings
+  { method, url, type } = settings
   { status } = xhr
 
   if window.environment == 'development'
+    console.log "#{type} #{url} failed: #{error}"
     console.log
       responseText: xhr.responseText
       settings: settings
+  else
+    appsignal.sendError new Error "#{type} #{url} failed: #{error}"

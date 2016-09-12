@@ -2,7 +2,9 @@
 //= require es5-shim
 //
 //= require jquery
-//= require jquery_configuration
+//= require config/jquery
+//= require moment
+//= require config/moment
 //= require global_helpers
 //= require appsignal
 //= require error_handler

@@ -1,7 +1,7 @@
 { div, i, p, a, button, span } = React.DOM
 
-@Outcome = React.createClass
-  displayName: 'Outcome'
+@CompletionBox = React.createClass
+  displayName: 'CompletionBox'
 
   mixins: [ScrollToOnMountMixin]
 
@@ -16,7 +16,7 @@
     { estimate, variance, finished } = @props.response
 
     div
-      className: 'outcome'
+      className: 'completion-box'
       if finished
         [
           p

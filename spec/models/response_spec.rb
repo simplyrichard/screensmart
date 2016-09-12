@@ -13,12 +13,6 @@ describe Response do
                               answer_value: 1
   end
 
-  describe '#show_secret' do
-    it 'is a secret based on the response_uuid' do
-      expect(response.show_secret).to eq Digest::SHA256.hexdigest "#{response.uuid}#{Rails.config.secret_key_base}"
-    end
-  end
-
   describe '#next_question' do
     it 'returns the next question from the R package' do
       expect(response.next_question.id).to eq 'EL02'

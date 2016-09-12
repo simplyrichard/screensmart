@@ -19,7 +19,7 @@ class Response < BaseModel
   end
 
   def show_secret
-    Digest::SHA256.hexdigest "#{uuid}#{Rails.config.some_secret}"
+    Digest::SHA256.hexdigest("#{uuid}#{Rails.config.secret_key_base}")
   end
 
   def domain_ids
@@ -54,5 +54,18 @@ class Response < BaseModel
 
   def events
     Events::Event.where response_uuid: uuid
+  end
+
+  def created_at
+    invitation_accepted.created_at
+  end
+
+  def invitation_accepted
+    Events::InvitationAccepted.find_by response_uuid: uuid
+  end
+
+  def self.find_by_show_secret(show_secret)
+    invitation_accepted = Events::InvitationAccepted.find_by_show_secret show_secret
+    find invitation_accepted.response_uuid
   end
 end
