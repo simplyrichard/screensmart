@@ -3,7 +3,7 @@ class @Appsignal
     data = {
       message:   error.message
       name:      error.name
-      backtrace: error.stack.split("\n")
+      backtrace: error.stack?.split("\n")
       path:      window.location.pathname
       environment: {
         agent:         navigator.userAgent

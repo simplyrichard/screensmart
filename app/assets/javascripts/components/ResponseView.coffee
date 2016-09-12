@@ -6,8 +6,6 @@
   render: ->
     { response } = @props
 
-    console.log response
-
     return React.createElement LoadingIndicator if response.loading
 
     div
