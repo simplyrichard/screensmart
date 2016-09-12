@@ -48,7 +48,7 @@ describe ResponsesController do
 
     it 'sends the email' do
       expect(ResponseMailer).to receive(:response_email).and_call_original
-      subject
+      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
 end
