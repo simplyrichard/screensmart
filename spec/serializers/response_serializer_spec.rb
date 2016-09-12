@@ -25,7 +25,7 @@ describe ResponseSerializer do
   it 'includes estimate, variance and questions' do
     expect(pretty(subject)).to eq(pretty({
       uuid: invitation_accepted.response_uuid,
-      created_at: invitation_accepted.created_at,
+      created_at: invitation_accepted.created_at.iso8601,
       estimate: 0.7,
       variance: 0.6,
       done: false,
