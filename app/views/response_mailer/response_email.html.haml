@@ -1,14 +1,10 @@
-%html{xmlns: 'http://www.w3.org/1999/xhtml'}
-  %head
-    %meta{'http-equiv' => 'Content-type', content: 'text/html; charset=UTF-8'}
-      %body
-        %p
-          Uw patient met het e-mailadres
-          = mail_to "no_respondent_email_available"
-          heeft de vragenlijst ingevuld. Als dit inderdaad het geval is, klik dan op onderstaande link.
+%p
+  Uw patient met het e-mailadres
+  = mail_to "no_respondent_email_available"
+  heeft de vragenlijst ingevuld. Als dit inderdaad het geval is, klik dan op onderstaande link.
 
-        %p
-          Als dit niet het geval is, kunt u deze e-mail als niet verzonden beschouwen.
+%p
+  Als dit niet het geval is, kunt u deze e-mail als niet verzonden beschouwen.
 
-        %p
-          = link_to 'Resultaat vragenlijst', @link
+%p
+  = link_to 'Resultaat vragenlijst', @link

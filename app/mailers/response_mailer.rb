@@ -1,7 +1,4 @@
-class ResponseMailer < ActionMailer::Base
-  domain = ENV.fetch('MAILGUN_DOMAIN', 'roqua.nl')
-  default from: "noreply@#{domain}"
-
+class ResponseMailer < ApplicationMailer
   def response_email(requester_email:, response_uuid:)
     @link = "future_link_to_finished_response/#{response_uuid}"
 
