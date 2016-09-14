@@ -27,7 +27,7 @@
                 key: 'check'
               span
                 key: 'thanks'
-                'Bedankt voor het invullen'
+                'Bedankt voor het invullen. De uitslag van de test is verstuurd naar uw behandelaar.'
             ]
           p
             key: 'estimate-variance'
