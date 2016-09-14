@@ -4,6 +4,6 @@ class ResponseMailer < ApplicationMailer
     @link = "future_link_to_finished_response/#{response_uuid}"
 
     mail to: requester_email,
-         subject: "Resultaten screening #{response_uuid}"
+         subject: "Resultaten screening"
   end
 end
