@@ -9,6 +9,11 @@
 class Response < BaseModel
   attr_accessor :uuid
 
+  # Accessors for attributes defined by events
+  delegate :show_secret, to: :invitation_sent
+  delegate :created_at, to: :invitation_accepted
+  delegate :domain_ids, to: :invitation
+
   # accessors for attributes defined by R package
   %i( next_question_id estimate variance done ).each do |r_attribute|
     define_method r_attribute do
@@ -16,10 +21,6 @@ class Response < BaseModel
         RPackage.data_for(answer_values, domain_ids)[r_attribute]
       end
     end
-  end
-
-  def domain_ids
-    invitation.domain_ids
   end
 
   def questions
@@ -48,16 +49,12 @@ class Response < BaseModel
     Invitation.find_by_response_uuid uuid
   end
 
-  def events
-    Events::Event.where response_uuid: uuid
-  end
-
-  def created_at
-    invitation_accepted.created_at
-  end
-
   def invitation_accepted
     Events::InvitationAccepted.find_by response_uuid: uuid
+  end
+
+  def events
+    Events::Event.where response_uuid: uuid
   end
 
   def self.find_by_show_secret(show_secret)
