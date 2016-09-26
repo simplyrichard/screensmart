@@ -16,6 +16,15 @@ describe 'answering questions' do
     "/fillOut?invitationUUID=#{invitation_sent.invitation_uuid}"
   end
 
+  def complete_response
+    # Question 1 = 'Oneens' means done in VCR cassette
+    answer_question 1, 'Oneens'
+    expect_last_question_to_be 'Vraag 1'
+    expect(page).to have_content 'Afronden'
+
+    click_on 'Afronden'
+  end
+
   let(:invitation_sent) do
     SendInvitation.run! requester_email: 'some@doctor.dev',
                         respondent_email: 'some@patient.dev',
@@ -40,12 +49,7 @@ describe 'answering questions' do
     answer_question 1, 'Eens'
     expect_last_question_to_be 'Vraag 2'
 
-    # Question 1 = 'Oneens' means done in VCR cassette
-    answer_question 1, 'Oneens'
-    expect_last_question_to_be 'Vraag 1'
-    expect(page).to have_content 'Afronden'
-
-    click_on 'Afronden'
+    complete_response
 
     expect(page).to have_content 'Bedankt voor het invullen'
   end
@@ -57,5 +61,14 @@ describe 'answering questions' do
     visit fill_out_url
 
     expect_last_question_to_be 'Vraag 1'
+  end
+
+  scenario 'viewing a completed response' do
+    complete_response
+
+    visit "/show?showSecret=#{Events::InvitationAccepted.last.show_secret}"
+
+    expect(page).to have_content 'Vraag 1' # It shows the question title
+    expect(page).to have_content 'Oneens'  # It shows the chosen option
   end
 end

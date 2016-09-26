@@ -92,7 +92,7 @@ findQuestion = (questions, id) ->
 
 responseWithDoneFalse = (response) ->
   merge response,
-        done: false # Ensure no old outcome is shown
+        done: false # Ensure no old completion box is shown
                     # in case user changes an answer
                     # after finishing
 

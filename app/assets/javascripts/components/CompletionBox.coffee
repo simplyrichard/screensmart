@@ -1,7 +1,7 @@
 { div, i, p, a, button, span } = React.DOM
 
-@Outcome = React.createClass
-  displayName: 'Outcome'
+@CompletionBox = React.createClass
+  displayName: 'CompletionBox'
 
   mixins: [ScrollToOnMountMixin]
 
@@ -16,7 +16,7 @@
     { estimate, variance, finished } = @props.response
 
     div
-      className: 'outcome'
+      className: 'completion-box'
       if finished
         [
           p
@@ -29,9 +29,6 @@
                 key: 'thanks'
                 'Bedankt voor het invullen. De uitslag van de test is verstuurd naar uw behandelaar.'
             ]
-          p
-            key: 'estimate-variance'
-            "Estimate: #{estimate}, variance: #{variance}"
         ]
       else
         [

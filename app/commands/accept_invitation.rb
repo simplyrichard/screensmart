@@ -7,7 +7,8 @@ class AcceptInvitation < ActiveInteraction::Base
 
   def execute
     Events::InvitationAccepted.create! invitation_uuid: invitation_uuid,
-                                       response_uuid: SecureRandom.uuid
+                                       response_uuid: SecureRandom.uuid,
+                                       show_secret: SecureRandom.uuid
   end
 
   def validate_response_has_not_been_finished

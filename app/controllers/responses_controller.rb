@@ -7,8 +7,7 @@ class ResponsesController < ApplicationController
   end
 
   def show
-    response = Response.find params[:id]
-    render json: ResponseSerializer.new(response).as_json
+    render json: ResponseSerializer.new(response_by_show_secret_or_id).as_json
   end
 
   def update
@@ -21,6 +20,13 @@ class ResponsesController < ApplicationController
   end
 
   private
+
+  def response_by_show_secret_or_id
+    return Response.find_by_show_secret params[:show_secret] if params[:show_secret]
+    return Response.find params[:id] if params[:id]
+
+    raise 'Neither `id` nor `show_secret` provided in params'
+  end
 
   def already_finished
     head :locked
