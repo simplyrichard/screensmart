@@ -15,7 +15,7 @@ describe ResponseMailer do
       end
 
       it 'contains a link to show the filled in questionnaires' do
-        expect(subject.body.encoded).to include("/show?showSecret=#{params[:show_secret]}")
+        expect(subject.body.encoded).to include("http://test_host/show?showSecret=#{params[:show_secret]}")
       end
     end
   end
