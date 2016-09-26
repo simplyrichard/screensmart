@@ -6,7 +6,7 @@ describe ResponseMailer do
       let(:params) do
         {
           requester_email: 'some@doctor.dev',
-          response_uuid: SecureRandom.uuid
+          show_secret: SecureRandom.uuid
         }
       end
 
@@ -14,8 +14,8 @@ describe ResponseMailer do
         expect(subject.to).to eq [params[:requester_email]]
       end
 
-      it 'contains a link to show the filled in questionnaires', skip: true do
-        # expect(subject.body.encoded).to include("http://test_host/fillOut?invitationUUID=#{params[:invitation_uuid]}")
+      it 'contains a link to show the filled in questionnaires' do
+        expect(subject.body.encoded).to include("/show?showSecret=#{params[:show_secret]}")
       end
     end
   end

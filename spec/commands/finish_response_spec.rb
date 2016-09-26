@@ -1,6 +1,7 @@
 describe FinishResponse do
   let!(:invitation_uuid) { SecureRandom.uuid }
   let!(:response_uuid) { SecureRandom.uuid }
+  let!(:show_secret) { SecureRandom.uuid }
 
   # Create a response with one answer (see VCR cassette) so we can finish the response
   before do
@@ -12,7 +13,8 @@ describe FinishResponse do
 
     Events::InvitationAccepted.create!(
       invitation_uuid: invitation_uuid,
-      response_uuid: response_uuid
+      response_uuid: response_uuid,
+      show_secret: show_secret
     )
 
     Events::AnswerSet.create!(
@@ -39,7 +41,7 @@ describe FinishResponse do
     end
 
     it 'sends an email to the requester' do
-      expect(ResponseMailer).to receive(:response_email).with response_uuid: params[:response_uuid],
+      expect(ResponseMailer).to receive(:response_email).with show_secret: show_secret,
                                                               requester_email: 'requester@example.dev'
       subject
     end
