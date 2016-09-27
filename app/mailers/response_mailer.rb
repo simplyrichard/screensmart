@@ -4,6 +4,6 @@ class ResponseMailer < ApplicationMailer
     @link = show_response_url(showSecret: show_secret)
 
     mail to: requester_email,
-         subject: 'Resultaten screening'
+         subject: 'Resultaten invulling'
   end
 end
