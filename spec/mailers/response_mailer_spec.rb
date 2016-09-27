@@ -6,7 +6,8 @@ describe ResponseMailer do
       let(:params) do
         {
           requester_email: 'some@doctor.dev',
-          show_secret: SecureRandom.uuid
+          show_secret: SecureRandom.uuid,
+          invitation_sent_at: Time.zone.now
         }
       end
 

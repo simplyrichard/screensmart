@@ -21,7 +21,8 @@ class FinishResponse < ActiveInteraction::Base
   end
 
   def send_response_email
-    ResponseMailer.response_email(requester_email: invitation_sent.requester_email,
+    ResponseMailer.response_email(invitation_sent_at: invitation_sent.created_at,
+                                  requester_email: invitation_sent.requester_email,
                                   show_secret: invitation.show_secret).deliver_now
   end
 

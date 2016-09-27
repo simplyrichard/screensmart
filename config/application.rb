@@ -14,5 +14,8 @@ Bundler.require(*Rails.groups)
 module Screensmart
   class Application < Rails::Application
     config.middleware.use 'OliveBranch::Middleware'
+
+    config.i18n.available_locales = :nl
+    config.i18n.default_locale = :nl
   end
 end
