@@ -1,6 +1,7 @@
 describe FinishResponse do
   let!(:invitation_uuid) { SecureRandom.uuid }
   let!(:response_uuid) { SecureRandom.uuid }
+  let!(:show_secret) { SecureRandom.uuid }
 
   # Create a response with one answer (see VCR cassette) so we can finish the response
   before do
@@ -12,7 +13,8 @@ describe FinishResponse do
 
     Events::InvitationAccepted.create!(
       invitation_uuid: invitation_uuid,
-      response_uuid: response_uuid
+      response_uuid: response_uuid,
+      show_secret: show_secret
     )
 
     Events::AnswerSet.create!(
@@ -20,6 +22,8 @@ describe FinishResponse do
       question_id: 'enough_answers_to_be_done',
       answer_value: 1
     )
+
+    allow(ResponseMailer).to receive_message_chain(:response_email, :deliver_now)
   end
 
   subject { described_class.run(params) }
@@ -34,6 +38,14 @@ describe FinishResponse do
     it 'saves the estimate and variance' do
       expect(subject.result.estimate).to be_a(Float)
       expect(subject.result.variance).to be_a(Float)
+    end
+
+    it 'sends an email to the requester' do
+      invitation_sent = Events::InvitationSent.find_by(invitation_uuid: invitation_uuid)
+      expect(ResponseMailer).to receive(:response_email).with show_secret: show_secret,
+                                                              requester_email: 'requester@example.dev',
+                                                              invitation_sent_at: invitation_sent.created_at
+      subject
     end
   end
 

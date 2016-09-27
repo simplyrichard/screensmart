@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   end
 
   get '/fillOut' => 'app#index', as: 'fill_out'
+  get '/show' => 'app#index', as: 'show_response'
   get '*path' => 'app#index' # Handle routing using react-redux-router
 end
