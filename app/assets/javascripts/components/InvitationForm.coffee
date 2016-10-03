@@ -67,6 +67,7 @@ invitationForm = React.createClass
                         id: domain.id
                         value: domain.id
                 label
+                  className: 'domain-label'
                   htmlFor: domain.id
                   domain.description
       button
