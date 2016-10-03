@@ -97,11 +97,11 @@ $form-text-padding: 11px
 $form-background-color: $application-card-background-color
 $form-border-color: $application-card-border-color
 $form-border-radius: $application-card-border-radius
-$form-submit-background-color: $option-background-color-hover
+$form-submit-background-color: darken(mix($screensmart-green, $screensmart-yellow, 25%), 5%)
 $form-submit-color: $option-color-hover
-$form-submit-border-color: $option-background-color-hover
+$form-submit-border-color: darken($form-submit-background-color, 3%)
 $form-submit-background-color-hover: darken($form-submit-background-color, 5%)
-$form-submit-border-color-hover: $form-submit-background-color-hover
+$form-submit-border-color-hover: darken($form-submit-border-color, 5%)
 
 //response view
 $response-background-color: $form-background-color
