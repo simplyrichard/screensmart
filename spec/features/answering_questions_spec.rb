@@ -19,7 +19,10 @@ describe 'answering questions' do
   def complete_response
     # Question 1 = 'Oneens' means done in VCR cassette
     answer_question 1, 'Oneens'
-    expect_last_question_to_be 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
+    answer_question 2, 'Oneens'
+    answer_question 3, 'Oneens'
+    answer_question 4, 'Oneens'
+    expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
     expect(page).to have_content 'Afronden'
 
     click_on 'Afronden'
@@ -42,8 +45,8 @@ describe 'answering questions' do
     expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord'
 
     # Question 1 = 'Eens' means there is a next question in VCR cassette
-    answer_question 1, 'Eens'
-    expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
+    # answer_question 1, 'Eens'
+    # expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
 
     complete_response
 
