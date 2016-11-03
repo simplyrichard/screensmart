@@ -24,6 +24,8 @@ describe ResponseSerializer do
     expect(serialized[:estimate_interpretation]).to be_a(String)
     expect(serialized[:warning].class).to be_in([String, NilClass])
     expect(serialized[:done]).to be_falsey
+    expect(serialized[:domain_ids]).to be_an(Array)
+    expect(serialized[:domain_ids]).to eq(['POS-PQ'])
     expect(serialized[:questions]).to be_an(Array)
     expect(serialized[:questions][0]).to include(:id, :text, :intro, :answer_value, :answer_option_set)
     expect(serialized[:questions][0][:id]).to eq('EL02')
