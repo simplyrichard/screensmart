@@ -7,12 +7,15 @@
 #   # => [#<Question:0x007faadb3459a8 @id="EL02", @answer_value: 1>,
 #         #<Question:0x007faadb2d49d8 @id="EL03">]
 class Response < BaseModel
+  include Events
   attr_accessor :uuid
+
+  # Response can either be created by accepting an invitation or starting a adhoc response
+  EVENT_TYPES_THAT_CAN_CREATE_IT = [Events::InvitationAccepted, Events::AdhocResponseStarted].freeze
 
   # Accessors for attributes defined by events
   delegate :show_secret, to: :invitation_sent
-  delegate :created_at, to: :invitation_accepted
-  delegate :domain_ids, to: :invitation
+  delegate :created_at, to: :event_that_created_it
 
   # accessors for attributes defined by R package
   %i( next_question_id estimate variance done ).each do |r_attribute|
@@ -49,8 +52,21 @@ class Response < BaseModel
     Invitation.find_by_response_uuid uuid
   end
 
-  def invitation_accepted
-    Events::InvitationAccepted.find_by response_uuid: uuid
+  def domain_ids
+    if adhoc?
+      event_that_created_it.domain_ids
+    else
+      invitation_sent.domain_ids
+    end
+  end
+
+  def adhoc?
+    event_that_created_it.is_a? Events::AdhocResponseStarted
+  end
+
+  def event_that_created_it
+    Events::Event.find_by response_uuid: uuid,
+                          type: EVENT_TYPES_THAT_CAN_CREATE_IT
   end
 
   def events
@@ -58,7 +74,7 @@ class Response < BaseModel
   end
 
   def self.find_by_show_secret(show_secret)
-    invitation_accepted = Events::InvitationAccepted.find_by_show_secret show_secret
+    invitation_accepted = Events::Event.where(type: EVENT_TYPES_THAT_CAN_CREATE_IT).jsonb_contains(show_secret: show_secret).first || raise("Couldn't find #{self} with show_secret #{show_secret}")
     find invitation_accepted.response_uuid
   end
 end

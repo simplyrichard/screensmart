@@ -11,7 +11,7 @@ describe AdhocResponsesController do
 
     it 'redirects to responses#show' do
       allow(SecureRandom).to receive(:uuid).and_return uuid
-      expect { subject }.to redirect_to "responses/#{uuid}"
+      expect(subject).to redirect_to "/responses/#{uuid}"
     end
   end
 end

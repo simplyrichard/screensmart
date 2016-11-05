@@ -1,3 +1,5 @@
+{ browserHistory } = ReactRouter
+
 Screensmart.Actions =
   fetchDomains: ->
     (dispatch) =>
@@ -48,6 +50,7 @@ Screensmart.Actions =
       $.postJSON("/adhoc_responses", {domainIds})
       .then (data) =>
         dispatch @receiveResponseUpdate(data)
+        browserHistory.push "/fillOut?responseUUID=#{data.responseUUID}"
       .fail (response) =>
         throw new Error 'Unknown error'
 

@@ -48,4 +48,19 @@ describe Response do
       expect(response.answers.map(&:id)).to eq %w( EL02 )
     end
   end
+
+  # Ensure #event_that_created_it
+  describe '#event_that_created_it' do
+    subject { Response.find(event.response_uuid).event_that_created_it }
+
+    context 'created by accepting invitation' do
+      let(:event) { Fabricate :invitation_accepted }
+      it { is_expected.to eq event }
+    end
+
+    context 'created by clicking "fill out directly" (ad-hoc response)' do
+      let(:event) { Fabricate :adhoc_response_started }
+      it { is_expected.to eq event }
+    end
+  end
 end

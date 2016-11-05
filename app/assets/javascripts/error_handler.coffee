@@ -13,7 +13,7 @@ showUnknownError = ->
 
 window.onerror = (_message, _filename, _lineno, _colno, error) ->
   showUnknownError()
-  error.message += " store contents: #{prettyStoreContents()}"
+  error.message += "||| store contents: #{prettyStoreContents()}"
 
   appsignal.sendError(error) if error && window.environment != 'development'
 

@@ -31,7 +31,7 @@ Screensmart.routes =
       path: '/fillOutDirectly'
       component: createFactory(FeedContainer)
       onEnter: (nextState) ->
-        domainIds = nextState.location.query.domainIds
+        domainIds = [nextState.location.query.domainIds]
         createAdhocResponse domainIds
     createFactory(Route)
       path: '/'
