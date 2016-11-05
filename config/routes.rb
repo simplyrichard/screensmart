@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope defaults: { format: 'json' }, constraints: { format: 'json' } do
     resources :responses, only: [:create, :show, :update]
+    resources :adhoc_responses, only: [:create]
     # get 'responses', controller: 'responses', action: 'show', as: 'response'
     resources :answers, only: [:create]
     resources :domains, only: [:index]

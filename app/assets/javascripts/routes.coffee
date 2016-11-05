@@ -7,6 +7,12 @@ createResponse = (invitationUUID) ->
   else
     throw new Error 'No invitationUUID provided in query'
 
+createAdhocResponse = (domainIds) ->
+  if domainIds
+    Screensmart.store.dispatch Screensmart.Actions.createAdhocResponse domainIds
+  else
+    throw new Error 'No domainIds provided in query'
+
 loadResponse = (showSecret) ->
   if showSecret
     Screensmart.store.dispatch Screensmart.Actions.loadResponse showSecret
@@ -21,6 +27,12 @@ Screensmart.routes =
       onEnter: (nextState) ->
         invitationUUID = nextState.location.query.invitationUUID
         createResponse invitationUUID
+    createFactory(Route)
+      path: '/fillOutDirectly'
+      component: createFactory(FeedContainer)
+      onEnter: (nextState) ->
+        domainIds = nextState.location.query.domainIds
+        createAdhocResponse domainIds
     createFactory(Route)
       path: '/'
       component: createFactory(InvitationFormContainer)

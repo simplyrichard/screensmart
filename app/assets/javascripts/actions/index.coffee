@@ -42,6 +42,15 @@ Screensmart.Actions =
         else
           throw new Error 'Unknown error'
 
+  createAdhocResponse: (domainIds) ->
+    (dispatch) =>
+      dispatch @startResponseUpdate()
+      $.postJSON("/adhoc_responses", {domainIds})
+      .then (data) =>
+        dispatch @receiveResponseUpdate(data)
+      .fail (response) =>
+        throw new Error 'Unknown error'
+
   loadResponse: (showSecret) ->
     (dispatch) =>
       dispatch @startResponseUpdate()
